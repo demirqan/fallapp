@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Uygulama Genel -->
+    <string name="app_name">Fal Kapısı</string>
+    <string name="app_slogan">Geleceğinizi Keşfedin</string>
+    <string name="loading">Yükleniyor...</string>
+    <string name="error">Hata oluştu</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="ok">Tamam</string>
+    <string name="cancel">İptal</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="save">Kaydet</string>
+    <string name="share">Paylaş</string>
+    <string name="send">Gönder</string>
+    <string name="next">İleri</string>
+    <string name="skip">Geç</string>
+    <string name="back">Geri</string>
+    <string name="close">Kapat</string>
+    <string name="select">Seç</string>
+    <string name="edit">Düzenle</string>
+    <string name="delete">Sil</string>
+    <string name="go">Git</string>
+    <string name="today">Bugün</string>
+    <string name="previous">Önceki</string>
+    <string name="next_button">Sonraki</string>
+
+    <!-- Ana Sayfa -->
+    <string name="welcome">Hoş Geldiniz</string>
+    <string name="welcome_message">Geleceğinizi keşfetmeye hazır mısınız? Size özel fallarımızla bilinmeyeni keşfedin.</string>
+    <string name="new_reading">Yeni Fal</string>
+    <string name="coffee_reading">Kahve Falı</string>
+    <string name="tarot_reading">Tarot Falı</string>
+    <string name="palm_reading">El Falı</string>
+    <string name="face_reading">Yüz Falı</string>
+    <string name="show_my_readings">Fallarımı Göster</string>
+    <string name="earn_coins">Altın Kazan</string>
+    <string name="buy_coins">Altın Satın Al</string>
+    <string name="free_coins">Ücretsiz Altın</string>
+    <string name="premium">Premium</string>
+    <string name="coins">Altın</string>
+
+    <!-- Falcı/Reading -->
+    <string name="fortune_teller">Falcı</string>
+    <string name="select_fortune_teller">Falcı Seçin</string>
+    <string name="reading_type">Fal Türü</string>
+    <string name="my_readings">Fallarım</string>
+    <string name="no_readings_yet">Henüz hiç falınız bulunmuyor</string>
+    <string name="topics_interested_in">İlgilendiğiniz Konular</string>
+    <string name="new_reading_question">Yeni bir fal bakmak ister misiniz?</string>
+    <string name="fortune_teller_description">Deneyimli falcınızla geleceğinizi keşfedin. Uzun yıllardır fal bakma deneyimi olan profesyonel.</string>
+
+    <!-- Kişisel Bilgiler -->
+    <string name="name">İsim</string>
+    <string name="enter_name">İsminizi girin</string>
+    <string name="birth_date">Doğum Tarihi</string>
+    <string name="select_birth_date">Doğum tarihinizi seçin</string>
+    <string name="select_date">Tarih seç</string>
+    <string name="relationship_status">İlişki Durumu</string>
+    <string name="job_status">Meslek Durumu</string>
+    <string name="user_photo">Kullanıcı Fotoğrafı</string>
+    <string name="for_user_name">%s için</string>
+    <string name="user_name_placeholder">Kullanıcı: %s</string>
+    <string name="default_user_name">Kullanıcı</string>
+    <string name="standard_member">Standart Üye</string>
+    <string name="default_coins">0 Altın</string>
+
+    <!-- Aşk Uyumu -->
+    <string name="love_compatibility">Aşk Uyumu</string>
+    <string name="love_compatibility_instruction">Aşk uyumunuzu hesaplamak için karşınızdaki kişinin bilgilerini girin</string>
+    <string name="new_person">Yeni Kişi</string>
+    <string name="person_name">Kişinin Adı</string>
+    <string name="person_name_placeholder">Kişi Adı: %s</string>
+    <string name="birth_date_placeholder">Doğum Tarihi: %s</string>
+    <string name="calculate_compatibility">Uyumu Hesapla</string>
+    <string name="compatibility_scores">Uyumluluk Puanları</string>
+    <string name="love">Aşk</string>
+    <string name="dialog">İletişim</string>
+    <string name="passion">Tutku</string>
+    <string name="check_another_person">Başka Bir Kişiyi Kontrol Et</string>
+
+    <!-- Burçlar -->
+    <string name="zodiac_sign">Burç</string>
+    <string name="horoscopes_astrology">Burçlar ve Astroloji</string>
+    <string name="selected_sign">Seçili Burç</string>
+    <string name="change_sign">Burç Değiştir</string>
+    <string name="share_horoscope">Burç Yorumunu Paylaş</string>
+    <string name="continue_reading">Okumaya Devam Et</string>
+    <string name="horoscope_placeholder">Bugün size harika fırsatlar sunacak bir gün olacak. Sevdiklerinizle geçireceğiniz zaman size mutluluk getirecek...</string>
+
+    <!-- Burç İsimleri -->
+    <string name="aries">Koç</string>
+    <string name="taurus">Boğa</string>
+    <string name="gemini">İkizler</string>
+    <string name="cancer">Yengeç</string>
+    <string name="leo">Aslan</string>
+    <string name="virgo">Başak</string>
+    <string name="libra">Terazi</string>
+    <string name="scorpio">Akrep</string>
+    <string name="sagittarius">Yay</string>
+    <string name="capricorn">Oğlak</string>
+    <string name="aquarius">Kova</string>
+    <string name="pisces">Balık</string>
+
+    <!-- Rüya Yorumu -->
+    <string name="dream">Rüya</string>
+    <string name="interpret_dream">Rüya Yorumu</string>
+    <string name="dream_instruction">Gördüğünüz rüyayı detaylı bir şekilde anlatın, size özel yorumumuzu sunalım</string>
+    <string name="your_dream">Rüyanız</string>
+    <string name="describe_your_dream">Rüyanızı detaylı bir şekilde anlatın...</string>
+    <string name="interpret_dream_button">Rüyayı Yorumla</string>
+
+    <!-- Rahatla -->
+    <string name="relax">Rahatla</string>
+    <string name="affirmations">Olumlamalar</string>
+    <string name="journal">Günlük</string>
+
+    <!-- Premium -->
+    <string name="premium_member">Premium Üye</string>
+    <string name="premium_benefits_short">Sınırsız erişim ve özel özellikler</string>
+    <string name="upgrade">Yükselt</string>
+
+    <!-- Altın/Para -->
+    <string name="your_balance">Altın Bakiyeniz</string>
+    <string name="coin_packs">Altın Paketleri</string>
+    <string name="coin_pack_small">Küçük Altın Paketi</string>
+    <string name="coin_pack_medium">Orta Altın Paketi</string>
+    <string name="coin_pack_large">Büyük Altın Paketi</string>
+    <string name="small_pack">Küçük Paket</string>
+    <string name="medium_pack">Orta Paket</string>
+    <string name="large_pack">Büyük Paket</string>
+    <string name="coins_50">50 Altın</string>
+    <string name="coins_120">120 Altın</string>
+    <string name="coins_300">300 Altın</string>
+    <string name="best_value">En Avantajlı</string>
+    <string name="free_coins_options">Ücretsiz altın kazanma seçenekleri</string>
+    <string name="watch_ad_for_coins">Reklam İzle (5 Altın)</string>
+    <string name="complete_task_for_coins">Görev Tamamla (10 Altın)</string>
+
+    <!-- Tarot -->
+    <string name="select_tarot_cards">Tarot Kartlarınızı Seçin</string>
+    <string name="tarot_instruction">İçinizden gelen sesle 3 kart seçin. Kartlarınız geleceğinizle ilgili önemli ipuçları verecek.</string>
+    <string name="tarot_card">Tarot Kartı</string>
+    <string name="reset_cards">Kartları Sıfırla</string>
+    <string name="get_detailed_reading">Detaylı Fal Al</string>
+    <string name="share_reading">Falı Paylaş</string>
+
+    <!-- Tarot Kartları -->
+    <string name="the_magician">Büyücü</string>
+    <string name="magician_meaning">Yaratıcılık, beceri, güç ve kaynak. Hedeflerinize ulaşmak için gereken tüm araçlara sahipsiniz.</string>
+    <string name="the_fool">Deli</string>
+    <string name="the_high_priestess">Yüksek Rahibe</string>
+    <string name="the_empress">İmparatoriçe</string>
+    <string name="the_emperor">İmparator</string>
+    <string name="the_hierophant">Aziz</string>
+    <string name="the_lovers">Aşklar</string>
+    <string name="the_chariot">Savaş Arabası</string>
+    <string name="strength">Güç</string>
+    <string name="the_hermit">Ermiş</string>
+    <string name="wheel_of_fortune">Şans Çarkı</string>
+    <string name="justice">Adalet</string>
+    <string name="the_hanged_man">Asilan Adam</string>
+    <string name="death">Ölüm</string>
+    <string name="temperance">Denge</string>
+    <string name="the_devil">Şeytan</string>
+    <string name="the_tower">Kule</string>
+    <string name="the_star">Yıldız</string>
+    <string name="the_moon">Ay</string>
+    <string name="the_sun">Güneş</string>
+    <string name="judgement">Son Hüküm</string>
+    <string name="the_world">Dünya</string>
+
+    <!-- Navigation Titles -->
+    <string name="title_home">Ana Sayfa</string>
+    <string name="title_readings">Fallarım</string>
+    <string name="title_horoscope">Burçlar</string>
+    <string name="title_premium">Premium</string>
+
+    <!-- Feature Navigation -->
+    <string name="feature_tarot">Tarot</string>
+    <string name="feature_dream">Rüya</string>
+    <string name="feature_love">Aşk</string>
+    <string name="feature_journal">Günlük</string>
+    <string name="feature_affirmations">Olumlama</string>
+
+    <!-- Menu Items -->
+    <string name="menu_home">Ana Sayfa</string>
+    <string name="menu_readings">Fallarım</string>
+    <string name="menu_horoscope">Burçlar</string>
+    <string name="menu_tarot">Tarot Falı</string>
+    <string name="menu_dream">Rüya Yorumu</string>
+    <string name="menu_love">Aşk Uyumu</string>
+    <string name="menu_love_compatibility">Aşk Uyumu</string>
+    <string name="menu_relax">Rahatla</string>
+    <string name="menu_relaxation">Rahatla</string>
+    <string name="menu_premium">Premium</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_help">Yardım</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_logout">Çıkış Yap</string>
+    <string name="menu_other">Diğer</string>
+    <string name="menu_buy_coins">Altın Satın Al</string>
+
+    <!-- Tanıtım (Onboarding) -->
+    <string name="onboarding_title_1">Hoş Geldiniz</string>
+    <string name="onboarding_desc_1">Geleceğinizi keşfetmeye hazır mısınız? Bizimle beraber bilinmeyeni keşfedin.</string>
+    <string name="onboarding_title_2">Profesyonel Falcılar</string>
+    <string name="onboarding_desc_2">Deneyimli ve güvenilir falcılarımızdan özel fallar alın.</string>
+    <string name="onboarding_title_3">Kişisel Yolculuğunuz</string>
+    <string name="onboarding_desc_3">Size özel fal deneyimi yaşayın ve geleceğinizi keşfedin.</string>
+
+    <!-- Falcı Bilgileri -->
+    <string name="online">Çevrimiçi</string>
+    <string name="offline">Çevrimdışı</string>
+    <string name="price">Fiyat</string>
+
+    <!-- Günler -->
+    <string name="monday">Pazartesi</string>
+    <string name="tuesday">Salı</string>
+    <string name="wednesday">Çarşamba</string>
+    <string name="thursday">Perşembe</string>
+    <string name="friday">Cuma</string>
+    <string name="saturday">Cumartesi</string>
+    <string name="sunday">Pazar</string>
+
+    <!-- Aylar -->
+    <string name="january">Ocak</string>
+    <string name="february">Şubat</string>
+    <string name="march">Mart</string>
+    <string name="april">Nisan</string>
+    <string name="may">Mayıs</string>
+    <string name="june">Haziran</string>
+    <string name="july">Temmuz</string>
+    <string name="august">Ağustos</string>
+    <string name="september">Eylül</string>
+    <string name="october">Ekim</string>
+    <string name="november">Kasım</string>
+    <string name="december">Aralık</string>
+
+    <!-- İlişki Durumları -->
+    <string name="single">Bekar</string>
+    <string name="in_relationship">İlişkide</string>
+    <string name="married">Evli</string>
+    <string name="divorced">Boşanmış</string>
+    <string name="widowed">Dul</string>
+
+    <!-- Meslek Durumları -->
+    <string name="employed">Çalışıyor</string>
+    <string name="unemployed">İşsiz</string>
+    <string name="student">Öğrenci</string>
+    <string name="retired">Emekli</string>
+    <string name="self_employed">Serbest Meslek</string>
+
+    <!-- Fal Konuları -->
+    <string name="topic_love">Aşk</string>
+    <string name="topic_career">Kariyer</string>
+    <string name="topic_health">Sağlık</string>
+    <string name="topic_family">Aile</string>
+    <string name="topic_money">Para</string>
+    <string name="topic_travel">Seyahat</string>
+    <string name="topic_general">Genel</string>
+
+    <!-- Hata Mesajları -->
+    <string name="error_network">İnternet bağlantınızı kontrol edin</string>
+    <string name="error_name_required">İsim alanı zorunludur</string>
+    <string name="error_date_required">Doğum tarihi seçmelisiniz</string>
+    <string name="error_insufficient_coins">Yetersiz altın. Daha fazla altın kazanın veya satın alın.</string>
+    <string name="error_dream_empty">Lütfen rüyanızı anlatın</string>
+
+    <!-- Başarı Mesajları -->
+    <string name="success_saved">Başarıyla kaydedildi</string>
+    <string name="success_shared">Başarıyla paylaşıldı</string>
+    <string name="success_coins_earned">%d altın kazandınız!</string>
+
+    <!-- Status Messages -->
+    <string name="countdown_format">%d:%02d</string>
+    <string name="processing_reading">Falınız hazırlanıyor...</string>
+    <string name="tap_to_select">Seçmek için dokunun</string>
+    <string name="cards_selected">%d kart seçildi</string>
+
+    <!-- Diğer -->
+    <string name="please_wait">Lütfen bekleyin...</string>
+    <string name="processing">İşleniyor...</string>
+    <string name="coming_soon">Çok Yakında</string>
+    <string name="under_maintenance">Bakım Modu</string>
+    <string name="rate_app">Uygulamayı Değerlendir</string>
+    <string name="share_app">Uygulamayı Paylaş</string>
+    <string name="contact_us">İletişim</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="terms_of_service">Kullanım Şartları</string>
+
+    <string name="navigation_drawer_close">Kullanım Şartları</string>
+    <string name="navigation_drawer_open">Kullanım Şartları</string>
+
+
+
+
+
+</resources>

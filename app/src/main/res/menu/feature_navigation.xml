@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/feature_tarot"
+        android:enabled="true"
+        android:icon="@drawable/ic_tarot_small"
+        android:title="@string/feature_tarot" />
+    <item
+        android:id="@+id/feature_dream"
+        android:enabled="true"
+        android:icon="@drawable/ic_dream_small"
+        android:title="@string/feature_dream" />
+    <item
+        android:id="@+id/feature_love"
+        android:enabled="true"
+        android:icon="@drawable/ic_love_small"
+        android:title=" " />
+    <item
+        android:id="@+id/feature_journal"
+        android:enabled="true"
+        android:icon="@drawable/ic_journal_small"
+        android:title="@string/feature_journal" />
+    <item
+        android:id="@+id/feature_affirmations"
+        android:enabled="true"
+        android:icon="@drawable/ic_affirmation_small"
+        android:title="@string/feature_affirmations" />
+</menu>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.falapp.fortunetelle">
+
+    <!-- Internet permission for ChatGPT API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network state permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Camera permission for photo capture -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Storage permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <!-- For Android 13+ (API 33+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- Notification permission for Android 13+ -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Billing permission -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <!-- Wake lock for services -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Vibrate permission for notifications -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Camera feature requirement -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name=".FalApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/falkapisi"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat"
+        tools:targetApi="31">
+
+        <!-- Splash Activity (Launcher) -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Onboarding Activity -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Main Navigation Activity -->
+        <activity
+            android:name=".MainNavigationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Fortune Teller List Activity -->
+        <activity
+            android:name=".FortuneTellerListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Reading Detail Activity -->
+        <activity
+            android:name=".ReadingDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".FortuneTellerListActivity" />
+
+        <!-- Reading Result Activity -->
+        <activity
+            android:name=".ReadingResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MyReadingsActivity" />
+
+        <!-- My Readings Activity -->
+        <activity
+            android:name=".MyReadingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Horoscope Activity -->
+        <activity
+            android:name=".HoroscopeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Horoscope Detail Activity -->
+        <activity
+            android:name=".HoroscopeDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".HoroscopeActivity" />
+
+        <!-- Tarot Activity -->
+        <activity
+            android:name=".TarotActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Tarot Detail Activity -->
+        <activity
+            android:name=".TarotDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".TarotActivity" />
+
+        <!-- Dream Interpretation Activity -->
+        <activity
+            android:name=".DreamInterpretationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Love Compatibility Activity -->
+        <activity
+            android:name=".LoveCompatibilityActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Love Compatibility Input Activity -->
+        <activity
+            android:name=".LoveCompatibilityInputActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Love Compatibility Result Activity -->
+        <activity
+            android:name=".LoveCompatibilityResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".LoveCompatibilityInputActivity" />
+
+        <!-- Relaxation Activity -->
+        <activity
+            android:name=".RelaxationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Affirmations Activity -->
+        <activity
+            android:name=".AffirmationsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".RelaxationActivity" />
+
+        <!-- Journal Activity -->
+        <activity
+            android:name=".JournalActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".RelaxationActivity" />
+
+        <!-- Coin Purchase Activity -->
+        <activity
+            android:name=".CoinPurchaseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Free Coin Activity -->
+        <activity
+            android:name=".FreeCoinActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CoinPurchaseActivity" />
+
+        <!-- Premium Activity -->
+        <activity
+            android:name=".PremiumActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Settings Activity -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Base Activity (not directly used) -->
+        <activity
+            android:name=".BaseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Drawer Activity (not directly used) -->
+        <activity
+            android:name=".DrawerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Reading Process Service -->
+        <service
+            android:name=".ReadingProcessService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Reading Notification Service -->
+        <service
+            android:name=".ReadingNotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- FileProvider for sharing photos -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Google Play Billing -->
+        <meta-data
+            android:name="com.google.android.play.billingclient.version"
+            android:value="6.1.0" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
+    </application>
+
+</manifest>

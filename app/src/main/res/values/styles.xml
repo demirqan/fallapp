@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Material 3 Bottom Navigation Indicator Style -->
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/m3_cosmic_primary_container</item>
+    </style>
+    
+    <!-- Material 3 Cosmic Active Indicator Style -->
+    <style name="M3CosmicActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/m3_cosmic_tertiary_container</item>
+        <item name="android:shape">@drawable/bg_nav_indicator</item>
+    </style>
+    
+    <!-- Material 3 Cosmic TextInputLayout Style -->
+    <style name="M3CosmicTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/m3_cosmic_outline</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/m3_cosmic_outline</item>
+        <item name="android:textColorHint">@color/m3_cosmic_outline</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+    </style>
+    
+    <!-- Material 3 Cosmic Switch Style -->
+    <style name="M3CosmicSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="trackTint">@color/m3_cosmic_outline_variant</item>
+        <item name="trackTintMode">src_in</item>
+        <item name="thumbTint">@color/m3_cosmic_tertiary</item>
+    </style>
+    
+    <!-- AppBar Theme -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorPrimary">@color/m3_cosmic_primary</item>
+        <item name="colorPrimaryVariant">@color/m3_cosmic_primary_variant</item>
+    </style>
+    
+    <!-- Popup Theme -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:textColor">@color/m3_cosmic_on_surface</item>
+    </style>
+    
+</resources>

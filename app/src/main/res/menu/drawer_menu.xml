@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_readings"
+            android:icon="@drawable/ic_readings"
+            android:title="@string/menu_readings" />
+        <item
+            android:id="@+id/nav_horoscope"
+            android:icon="@drawable/ic_horoscope"
+            android:title="@string/menu_horoscope" />
+        <item
+            android:id="@+id/nav_tarot"
+            android:icon="@drawable/ic_tarot"
+            android:title="@string/menu_tarot" />
+        <item
+            android:id="@+id/nav_dream"
+            android:icon="@drawable/ic_dream"
+            android:title="@string/menu_dream" />
+        <item
+            android:id="@+id/nav_love"
+            android:icon="@drawable/ic_love"
+            android:title="@string/menu_love_compatibility" />
+        <item
+            android:id="@+id/nav_relaxation"
+            android:icon="@drawable/ic_relaxation"
+            android:title="@string/menu_relaxation" />
+    </group>
+
+    <item android:title="@string/menu_other">
+        <menu>
+            <item
+                android:id="@+id/nav_coins"
+                android:icon="@drawable/ic_coins"
+                android:title="@string/menu_buy_coins" />
+            <item
+                android:id="@+id/nav_premium"
+                android:icon="@drawable/ic_premium"
+                android:title="@string/menu_premium" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/menu_settings" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="cosmic_refresh_colors">
+        <item>@color/m3_cosmic_tertiary</item>
+        <item>@color/m3_cosmic_glow</item>
+        <item>@color/m3_cosmic_primary</item>
+    </array>
+    
+    <string-array name="relationship_status_array">
+        <item>@string/single</item>
+        <item>@string/in_relationship</item>
+        <item>@string/married</item>
+        <item>@string/divorced</item>
+        <item>@string/widowed</item>
+    </string-array>
+    
+    <string-array name="job_status_array">
+        <item>@string/employed</item>
+        <item>@string/unemployed</item>
+        <item>@string/student</item>
+        <item>@string/retired</item>
+        <item>@string/self_employed</item>
+    </string-array>
+</resources>

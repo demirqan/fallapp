@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/mystic_light"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Circle (converted to path) -->
+    <path
+        android:fillColor="@color/primary_color"
+        android:alpha="0.2"
+        android:pathData="M200,70C244.18,70 280,105.82 280,150C280,194.18 244.18,230 200,230C155.82,230 120,194.18 120,150C120,105.82 155.82,70 200,70Z" />
+
+    <!-- Star path -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:pathData="M200,80L210,110L240,110L218,128L228,158L200,143L172,158L182,128L160,110L190,110L200,80Z" />
+
+</vector>

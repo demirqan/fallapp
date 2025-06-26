@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/green"
+        android:alpha="0.1"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Star path -->
+    <path
+        android:fillColor="@color/green"
+        android:pathData="M200,80L220,130L270,130L230,160L250,210L200,185L150,210L170,160L130,130L180,130L200,80Z" />
+
+    <!-- Outer circle -->
+    <path
+        android:fillColor="@color/white"
+        android:alpha="0.3"
+        android:pathData="M200,100C227.61,100 250,122.39 250,150C250,177.61 227.61,200 200,200C172.39,200 150,177.61 150,150C150,122.39 172.39,100 200,100Z" />
+
+    <!-- Inner circle -->
+    <path
+        android:fillColor="@color/green"
+        android:alpha="0.5"
+        android:pathData="M200,120C216.57,120 230,133.43 230,150C230,166.57 216.57,180 200,180C183.43,180 170,166.57 170,150C170,133.43 183.43,120 200,120Z" />
+
+</vector>

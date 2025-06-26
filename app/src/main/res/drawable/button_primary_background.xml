@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/m3_cosmic_primary_variant">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="28dp" />
+            <gradient
+                android:startColor="@color/m3_cosmic_tertiary"
+                android:endColor="@color/m3_cosmic_tertiary_variant"
+                android:angle="135" />
+        </shape>
+    </item>
+</ripple>

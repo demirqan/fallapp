@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Glow effect -->
+    <item>
+        <shape>
+            <solid android:color="#00000000" />
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/m3_cosmic_tertiary" />
+        </shape>
+    </item>
+    
+    <!-- Main background -->
+    <item android:left="1dp" android:right="1dp" android:top="1dp" android:bottom="1dp">
+        <shape>
+            <gradient
+                android:type="linear"
+                android:angle="45"
+                android:startColor="@color/m3_cosmic_primary_container"
+                android:endColor="@color/m3_cosmic_tertiary_container" />
+            <corners android:radius="15dp" />
+        </shape>
+    </item>
+</layer-list>

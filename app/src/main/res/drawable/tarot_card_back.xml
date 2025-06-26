@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="300dp"
+    android:viewportWidth="200"
+    android:viewportHeight="300">
+    
+    <!-- Tarot card back design -->
+    <group>
+        <!-- Background -->
+        <path
+            android:fillColor="@color/m3_cosmic_surface_variant"
+            android:pathData="M0,0 L200,0 L200,300 L0,300 Z"/>
+        
+        <!-- Stars pattern -->
+        <path
+            android:fillColor="@color/m3_cosmic_star"
+            android:pathData="M100,50 L105,60 L115,60 L107,67 L110,77 L100,70 L90,77 L93,67 L85,60 L95,60 Z"/>
+        
+        <path
+            android:fillColor="@color/m3_cosmic_shimmer"
+            android:pathData="M50,100 L53,106 L59,106 L54,110 L56,116 L50,112 L44,116 L46,110 L41,106 L47,106 Z"/>
+        
+        <path
+            android:fillColor="@color/m3_cosmic_shimmer"
+            android:pathData="M150,100 L153,106 L159,106 L154,110 L156,116 L150,112 L144,116 L146,110 L141,106 L147,106 Z"/>
+        
+        <!-- Center moon symbol -->
+        <path
+            android:fillColor="@color/m3_cosmic_tertiary"
+            android:pathData="M100,130 Q85,150 100,170 Q90,150 100,130"/>
+        
+        <!-- Bottom star -->
+        <path
+            android:fillColor="@color/m3_cosmic_star"
+            android:pathData="M100,220 L105,230 L115,230 L107,237 L110,247 L100,240 L90,247 L93,237 L85,230 L95,230 Z"/>
+    </group>
+</vector>

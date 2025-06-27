@@ -55,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         User user = dbHelper.getUser();
 
-        if (user != null) {
-            user.setCoins(9999); // buraya istediğin miktarı yazabilirsin
-            dbHelper.updateUserCoins(user.getId(), user.getCoins());
-            Toast.makeText(this, "Altın eklendi: " + user.getCoins(), Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     @Override
@@ -180,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MyReadingsActivity.class)));
 
         cardBuyCoins.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, PremiumActivity.class)));
+                startActivity(new Intent(MainActivity.this, CoinPurchaseActivity.class)));
 
         cardFreeCoins.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, FreeCoinActivity.class)));

@@ -19,7 +19,7 @@ public class ChatGPTService {
 
     private static final String TAG = "ChatGPTService";
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "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";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private OkHttpClient client;
@@ -75,6 +75,8 @@ public class ChatGPTService {
 
             Response response = client.newCall(request).execute();
             String responseBody = response.body().string();
+
+            Log.e(TAG, "Raw response body: " + responseBody);  // 🌟 EKLENECEK SATIR
 
 
             JSONObject jsonResponse = new JSONObject(responseBody);

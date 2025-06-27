@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Uygulama Genel -->
-    <string name="app_name">Fal Kapısı</string>
-    <string name="app_slogan">Geleceğinizi Keşfedin</string>
+    <string name="app_name">Falcı Abla</string>
+    <string name="app_slogan">Falcı Abla Herşeyi Görür!</string>
     <string name="loading">Yükleniyor...</string>
     <string name="error">Hata oluştu</string>
     <string name="try_again">Tekrar Dene</string>
@@ -27,7 +27,7 @@
 
     <!-- Ana Sayfa -->
     <string name="welcome">Hoş Geldiniz</string>
-    <string name="welcome_message">Geleceğinizi keşfetmeye hazır mısınız? Size özel fallarımızla bilinmeyeni keşfedin.</string>
+    <string name="welcome_message">Evrenin mesajlarını Falcı Abla’dan dinle!</string>
     <string name="new_reading">Yeni Fal</string>
     <string name="coffee_reading">Kahve Falı</string>
     <string name="tarot_reading">Tarot Falı</string>

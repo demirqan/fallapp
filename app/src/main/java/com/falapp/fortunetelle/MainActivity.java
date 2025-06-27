@@ -52,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Update UI with user data
         updateUI();
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        User user = dbHelper.getUser();
+
+        if (user != null) {
+            user.setCoins(9999); // buraya istediğin miktarı yazabilirsin
+            dbHelper.updateUserCoins(user.getId(), user.getCoins());
+            Toast.makeText(this, "Altın eklendi: " + user.getCoins(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

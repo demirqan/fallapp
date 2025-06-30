@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/orange"
+        android:alpha="0.1"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Large star -->
+    <path
+        android:fillColor="@color/orange"
+        android:pathData="M200,80L230,150L300,150L245,185L275,255L200,220L125,255L155,185L100,150L170,150L200,80Z" />
+
+    <!-- Center circle -->
+    <path
+        android:fillColor="@color/white"
+        android:alpha="0.5"
+        android:pathData="M200,110C222.09,110 240,127.91 240,150C240,172.09 222.09,190 200,190C177.91,190 160,172.09 160,150C160,127.91 177.91,110 200,110Z" />
+
+</vector>

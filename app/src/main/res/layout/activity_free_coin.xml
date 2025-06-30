@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_cosmic_main">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/m3_cosmic_surface"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:title="Ücretsiz Altın Kazan"
+        app:titleTextColor="@color/m3_cosmic_on_surface" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Current Coins Display -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_cosmic_highlight"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_coin_icon"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_coin"
+                        android:tint="@color/m3_cosmic_on_tertiary"
+                        android:layout_marginEnd="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mevcut Altın: "
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:textColor="@color/m3_cosmic_on_surface"
+                        android:fontFamily="@font/medium" />
+
+                    <TextView
+                        android:id="@+id/tv_coins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/m3_cosmic_star"
+                        android:fontFamily="@font/bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Watch Ad -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_watch_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_cosmic"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_coin_icon"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_video_ad"
+                        android:tint="@color/m3_cosmic_on_tertiary"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reklam İzle"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:fontFamily="@font/bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Video reklam izleyerek 5 altın kazan"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:alpha="0.8"
+                            android:fontFamily="@font/regular" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+5"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/m3_cosmic_tertiary"
+                        android:fontFamily="@font/bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_watch_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reklam İzle"
+                android:background="@drawable/btn_cosmic_outline"
+                android:textColor="@color/m3_cosmic_tertiary"
+                android:fontFamily="@font/medium"
+                android:textAllCaps="false"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone" />
+
+            <!-- Share App -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_share_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_cosmic"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_coin_icon"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_share"
+                        android:tint="@color/m3_cosmic_on_tertiary"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Uygulamayı Paylaş"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:fontFamily="@font/bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Uygulamayı sosyal medyada paylaş"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:alpha="0.8"
+                            android:fontFamily="@font/regular" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+10"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/m3_cosmic_tertiary"
+                        android:fontFamily="@font/bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_share_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uygulamayı Paylaş"
+                android:background="@drawable/btn_cosmic_outline"
+                android:textColor="@color/m3_cosmic_tertiary"
+                android:fontFamily="@font/medium"
+                android:textAllCaps="false"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone" />
+
+            <!-- Daily Bonus -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_daily_bonus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_cosmic"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_coin_icon"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_gift"
+                        android:tint="@color/m3_cosmic_on_tertiary"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Günlük Bonus"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:fontFamily="@font/bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Her gün giriş yaparak bonus al"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:alpha="0.8"
+                            android:fontFamily="@font/regular" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+15"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/m3_cosmic_tertiary"
+                        android:fontFamily="@font/bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_daily_bonus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Günlük Bonus Al"
+                android:background="@drawable/btn_cosmic_outline"
+                android:textColor="@color/m3_cosmic_tertiary"
+                android:fontFamily="@font/medium"
+                android:textAllCaps="false"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone" />
+
+            <!-- Complete Task -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_complete_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_cosmic"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_coin_icon"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_task"
+                        android:tint="@color/m3_cosmic_on_tertiary"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Görev Tamamla"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:fontFamily="@font/bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Görevleri tamamlayarak altın kazan"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:textColor="@color/m3_cosmic_on_surface"
+                            android:alpha="0.8"
+                            android:fontFamily="@font/regular" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+20"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textColor="@color/m3_cosmic_tertiary"
+                        android:fontFamily="@font/bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btn_complete_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Görev Tamamla"
+                android:background="@drawable/btn_cosmic_outline"
+                android:textColor="@color/m3_cosmic_tertiary"
+                android:fontFamily="@font/medium"
+                android:textAllCaps="false"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/bottom_navigation" />
+
+</LinearLayout>

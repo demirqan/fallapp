@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/gold"
+        android:pathData="M12,2A10,10 0,0 0,2 12A10,10 0,0 0,12 22A10,10 0,0 0,22 12A10,10 0,0 0,12 2M12,4A8,8 0,0 1,20 12A8,8 0,0 1,12 20A8,8 0,0 1,4 12A8,8 0,0 1,12 4M12.5,6V8.5H15V10.5H12.5V15H10.5V10.5H8V8.5H10.5V6H12.5Z" />
+    <!-- Circle cx="7" cy="7" radius="3" converted to path -->
+    <path
+        android:fillColor="@color/gold"
+        android:pathData="M4,7A3,3 0,0 0,10 7A3,3 0,0 0,4 7Z" />
+    <!-- Circle cx="17" cy="7" radius="3" converted to path -->
+    <path
+        android:fillColor="@color/gold"
+        android:pathData="M14,7A3,3 0,0 0,20 7A3,3 0,0 0,14 7Z" />
+    <!-- Circle cx="7" cy="17" radius="3" converted to path -->
+    <path
+        android:fillColor="@color/gold"
+        android:pathData="M4,17A3,3 0,0 0,10 17A3,3 0,0 0,4 17Z" />
+    <!-- Circle cx="17" cy="17" radius="3" converted to path -->
+    <path
+        android:fillColor="@color/gold"
+        android:pathData="M14,17A3,3 0,0 0,20 17A3,3 0,0 0,14 17Z" />
+</vector>

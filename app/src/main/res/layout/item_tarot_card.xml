@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_cosmic"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_card_image"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/bg_tarot_card_frame"
+        android:padding="8dp"
+        android:src="@drawable/tarot_magician"
+        android:contentDescription="@string/tarot_card" />
+
+    <TextView
+        android:id="@+id/tv_card_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/the_magician"
+        android:textColor="@color/m3_cosmic_star"
+        android:textSize="22sp"
+        android:fontFamily="@font/bold"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_card_meaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/magician_meaning"
+        android:textColor="@color/m3_cosmic_shimmer"
+        android:textSize="16sp"
+        android:fontFamily="@font/regular" />
+
+</LinearLayout>

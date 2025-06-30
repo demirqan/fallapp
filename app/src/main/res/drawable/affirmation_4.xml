@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:alpha="0.1"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Top horizontal bar -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:pathData="M120,100L280,100L270,130L130,130L120,100Z" />
+
+    <!-- Bottom horizontal bar -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:pathData="M130,170L270,170L260,200L140,200L130,170Z" />
+
+    <!-- Bottom circle -->
+    <path
+        android:fillColor="@color/primary_color"
+        android:pathData="M200,210C211.05,210 220,218.95 220,230C220,241.05 211.05,250 200,250C188.95,250 180,241.05 180,230C180,218.95 188.95,210 200,210Z" />
+
+</vector>

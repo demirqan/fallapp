@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_tarot_gradient"
+    tools:context=".TarotActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/m3_cosmic_surface"
+            app:titleTextColor="@color/m3_cosmic_on_surface"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_tarot_cards"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="20sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tarot_instruction"
+                android:textColor="@color/m3_cosmic_shimmer"
+                android:textSize="16sp"
+                android:fontFamily="@font/regular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_1"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_2"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_3"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_4"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_5"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+                <ImageView
+                    android:id="@+id/iv_tarot_card_6"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_tarot_card_selector"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cardback"
+                    android:contentDescription="@string/tarot_card" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/tv_interpretation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/m3_cosmic_on_surface"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/medium"
+                    android:lineSpacingExtra="4sp"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/button_cosmic_outline"
+                android:text="@string/reset_cards"
+                android:textColor="@color/m3_cosmic_primary"
+                android:fontFamily="@font/medium"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_full_reading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_cosmic_primary"
+                android:text="@string/get_detailed_reading"
+                android:textColor="@color/m3_cosmic_on_tertiary"
+                android:fontFamily="@font/bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

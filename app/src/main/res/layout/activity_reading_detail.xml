@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_cosmic"
+    tools:context=".ReadingDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_toolbar_cosmic"
+            app:titleTextColor="@color/m3_cosmic_star"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge"
+            app:navigationIconTint="@color/m3_cosmic_star"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:foreground="@drawable/bg_card_cosmic">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fortune_teller"
+                        android:textColor="@color/m3_cosmic_outline"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/regular" />
+
+                    <TextView
+                        android:id="@+id/tv_fortune_teller_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Sinem"
+                        android:textColor="@color/m3_cosmic_star"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/bold"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/topics_interested_in"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/ll_topics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <!-- Topic checkboxes will be added here programmatically -->
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_premium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:foreground="@drawable/bg_premium_card_cosmic">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_premium"
+                        android:contentDescription="@string/premium" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/premium_member"
+                            android:textColor="@color/m3_cosmic_star"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/bold"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/premium_benefits_short"
+                            android:textColor="@color/m3_cosmic_shimmer"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/regular" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:paddingHorizontal="16dp"
+                        android:background="@drawable/rounded_button_gold"
+                        android:text="@string/upgrade"
+                        android:textColor="@color/m3_cosmic_on_tertiary"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/medium" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder_photo"
+                android:contentDescription="@string/user_photo"
+                android:background="@drawable/rounded_border"
+                android:padding="2dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/name"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_person"
+                    android:contentDescription="@string/name"
+                    app:tint="@color/m3_cosmic_outline" />
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/enter_name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/m3_cosmic_on_surface"
+                    android:textColorHint="@color/m3_cosmic_outline"
+                    android:fontFamily="@font/regular"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:background="@drawable/edit_text_background" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_edit"
+                    android:contentDescription="@string/edit"
+                    app:tint="@color/m3_cosmic_tertiary" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/birth_date"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_calendar"
+                    android:contentDescription="@string/birth_date"
+                    app:tint="@color/m3_cosmic_outline" />
+
+                <TextView
+                    android:id="@+id/tv_birth_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:padding="12dp"
+                    android:text="@string/select_birth_date"
+                    android:textColor="@color/m3_cosmic_on_surface"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/regular"
+                    android:background="@drawable/edit_text_background" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_calendar_select"
+                    android:contentDescription="@string/select_date"
+                    app:tint="@color/m3_cosmic_tertiary" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/relationship_status"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_relationship"
+                    android:contentDescription="@string/relationship_status"
+                    app:tint="@color/m3_cosmic_outline" />
+
+                <Spinner
+                    android:id="@+id/sp_relationship_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:padding="12dp"
+                    android:background="@drawable/spinner_background" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_dropdown"
+                    android:contentDescription="@string/select"
+                    app:tint="@color/m3_cosmic_outline" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/job_status"
+                android:textColor="@color/m3_cosmic_star"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_work"
+                    android:contentDescription="@string/job_status"
+                    app:tint="@color/m3_cosmic_outline" />
+
+                <Spinner
+                    android:id="@+id/sp_job_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:padding="12dp"
+                    android:background="@drawable/spinner_background" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_dropdown"
+                    android:contentDescription="@string/select"
+                    app:tint="@color/m3_cosmic_outline" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_button_primary"
+                android:text="@string/send"
+                android:textColor="@color/m3_cosmic_on_tertiary"
+                android:fontFamily="@font/medium"
+                android:textSize="16sp"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

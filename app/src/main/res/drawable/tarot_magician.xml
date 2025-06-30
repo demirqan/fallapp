@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="300dp"
+    android:viewportWidth="200"
+    android:viewportHeight="300">
+    
+    <!-- The Magician tarot card placeholder -->
+    <group>
+        <!-- Background -->
+        <path
+            android:fillColor="@color/m3_cosmic_surface_variant"
+            android:pathData="M0,0 L200,0 L200,300 L0,300 Z"/>
+        
+        <!-- Figure -->
+        <path
+            android:fillColor="@color/m3_cosmic_tertiary"
+            android:pathData="M100,60 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0"/>
+        
+        <!-- Body -->
+        <path
+            android:fillColor="@color/m3_cosmic_glow"
+            android:pathData="M80,80 L80,180 L120,180 L120,80 Z"/>
+        
+        <!-- Wand -->
+        <path
+            android:strokeColor="@color/m3_cosmic_star"
+            android:strokeWidth="3"
+            android:pathData="M120,100 L140,80"/>
+        
+        <!-- Infinity symbol -->
+        <path
+            android:strokeColor="@color/m3_cosmic_tertiary"
+            android:strokeWidth="2"
+            android:fillColor="#00000000"
+            android:pathData="M80,40 Q90,30 100,40 Q110,50 120,40 Q110,30 100,40 Q90,50 80,40"/>
+        
+        <!-- Text -->
+        <path
+            android:fillColor="@color/m3_cosmic_star"
+            android:pathData="M60,250 L140,250 L140,270 L60,270 Z"/>
+    </group>
+</vector>

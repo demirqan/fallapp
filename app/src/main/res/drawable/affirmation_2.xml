@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/green"
+        android:alpha="0.1"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Central oval -->
+    <path
+        android:fillColor="@color/green"
+        android:pathData="M200,100C220,100 235,115 235,135C235,155 220,170 200,170C180,170 165,155 165,135C165,115 180,100 200,100Z" />
+
+    <!-- Left circle -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:alpha="0.5"
+        android:pathData="M150,170C166.57,170 180,183.43 180,200C180,216.57 166.57,230 150,230C133.43,230 120,216.57 120,200C120,183.43 133.43,170 150,170Z" />
+
+    <!-- Right circle -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:alpha="0.5"
+        android:pathData="M250,170C266.57,170 280,183.43 280,200C280,216.57 266.57,230 250,230C233.43,230 220,216.57 220,200C220,183.43 233.43,170 250,170Z" />
+
+</vector>

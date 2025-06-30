@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/teal_200"
+        android:alpha="0.1"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Background circle -->
+    <path
+        android:fillColor="@color/teal_200"
+        android:alpha="0.3"
+        android:pathData="M200,90C233.14,90 260,116.86 260,150C260,183.14 233.14,210 200,210C166.86,210 140,183.14 140,150C140,116.86 166.86,90 200,90Z" />
+
+    <!-- White shape in center -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M160,150C160,130 175,115 195,115C215,115 240,130 240,150C240,170 215,185 195,185C175,185 160,170 160,150Z" />
+
+</vector>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.falapp.falciabla">
+
+    <!-- Internet permission for ChatGPT API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network state permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Camera permission for photo capture -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Storage permissions -->
+
+
+    <!-- For Android 13+ (API 33+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Notification permission for Android 13+ -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Billing permission -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <!-- Wake lock for services -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Vibrate permission for notifications -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Camera feature requirement -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name="com.falapp.falciabla.FalApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/falkapisi"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat"
+        tools:targetApi="31">
+
+        <!-- Splash Activity (Launcher) -->
+        <activity
+            android:name="com.falapp.falciabla.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Onboarding Activity -->
+        <activity
+            android:name="com.falapp.falciabla.OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name="com.falapp.falciabla.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Main Navigation Activity -->
+        <activity
+            android:name="com.falapp.falciabla.MainNavigationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+
+        <!-- Fortune Teller List Activity -->
+        <activity
+            android:name="com.falapp.falciabla.FortuneTellerListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Reading Detail Activity -->
+        <activity
+            android:name="com.falapp.falciabla.ReadingDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.FortuneTellerListActivity" />
+
+        <!-- Reading Result Activity -->
+        <activity
+            android:name="com.falapp.falciabla.ReadingResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MyReadingsActivity" />
+
+        <!-- My Readings Activity -->
+        <activity
+            android:name="com.falapp.falciabla.MyReadingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Horoscope Activity -->
+        <activity
+            android:name="com.falapp.falciabla.HoroscopeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Horoscope Detail Activity -->
+        <activity
+            android:name="com.falapp.falciabla.HoroscopeDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.HoroscopeActivity" />
+
+        <!-- Tarot Activity -->
+        <activity
+            android:name="com.falapp.falciabla.TarotActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Tarot Detail Activity -->
+        <activity
+            android:name="com.falapp.falciabla.TarotDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.TarotActivity" />
+
+        <!-- Dream Interpretation Activity -->
+        <activity
+            android:name="com.falapp.falciabla.DreamInterpretationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Love Compatibility Activity -->
+        <activity
+            android:name="com.falapp.falciabla.LoveCompatibilityActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Love Compatibility Input Activity -->
+        <activity
+            android:name="com.falapp.falciabla.LoveCompatibilityInputActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Love Compatibility Result Activity -->
+        <activity
+            android:name="com.falapp.falciabla.LoveCompatibilityResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.LoveCompatibilityInputActivity" />
+
+        <!-- Relaxation Activity -->
+        <activity
+            android:name="com.falapp.falciabla.RelaxationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Affirmations Activity -->
+        <activity
+            android:name="com.falapp.falciabla.AffirmationsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.RelaxationActivity" />
+
+        <!-- Journal Activity -->
+        <activity
+            android:name="com.falapp.falciabla.JournalActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.RelaxationActivity" />
+
+        <!-- Coin Purchase Activity -->
+        <activity
+            android:name="com.falapp.falciabla.CoinPurchaseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Free Coin Activity -->
+        <activity
+            android:name="com.falapp.falciabla.FreeCoinActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.CoinPurchaseActivity" />
+
+        <!-- Premium Activity -->
+        <activity
+            android:name="com.falapp.falciabla.PremiumActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Settings Activity -->
+        <activity
+            android:name="com.falapp.falciabla.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.falapp.falciabla.MainActivity" />
+
+        <!-- Base Activity (not directly used) -->
+        <activity
+            android:name="com.falapp.falciabla.BaseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Drawer Activity (not directly used) -->
+        <activity
+            android:name="com.falapp.falciabla.DrawerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Reading Process Service -->
+        <service
+            android:name="com.falapp.falciabla.ReadingProcessService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Reading Notification Service -->
+        <service
+            android:name="com.falapp.falciabla.ReadingNotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- FileProvider for sharing photos -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Google Play Billing -->
+        <meta-data
+            android:name="com.google.android.play.billingclient.version"
+            android:value="6.1.0" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
+    </application>
+
+</manifest>

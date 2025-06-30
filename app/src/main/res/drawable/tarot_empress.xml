@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <rect
+        android:width="300dp"
+        android:height="300dp"
+        android:fillColor="@color/mystic_light" />
+    <path
+        android:fillColor="@color/primary_color"
+        android:pathData="M150,50L170,100L220,100L180,130L200,180L150,155L100,180L120,130L80,100L130,100L150,50Z" />
+    <!-- Circle cx="150" cy="200" r="60" with alpha="0.3" converted to path -->
+    <path
+        android:fillColor="@color/mystic_purple"
+        android:fillAlpha="0.3"
+        android:pathData="M90,200A60,60 0,0 0,210 200A60,60 0,0 0,90 200Z" />
+</vector>

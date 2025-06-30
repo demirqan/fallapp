@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <!-- App Primary Colors -->
+    <color name="primary_color">#060e19</color>
+    <color name="primary_variant">#FF4527A0</color>
+    <color name="secondary_color">#FFE91E63</color>
+    <color name="secondary_variant">#FFC2185B</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#FFFFFFFF</color>
+    <color name="background_dark">#FF121212</color>
+    <color name="surface_light">#FFFFFFFF</color>
+    <color name="surface_dark">#FF121212</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary_light">#FF000000</color>
+    <color name="text_primary_dark">#FFFFFFFF</color>
+    <color name="text_secondary_light">#FF757575</color>
+    <color name="text_secondary_dark">#FFBDBDBD</color>
+
+    <!-- Common Colors -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="gray_light">#FFF5F5F5</color>
+    <color name="gray_medium">#FFBDBDBD</color>
+    <color name="gray_dark">#FF424242</color>
+
+    <!-- Status Colors -->
+    <color name="success">#FF4CAF50</color>
+    <color name="warning">#FFFF9800</color>
+    <color name="error">#FFF44336</color>
+    <color name="info">#FF2196F3</color>
+
+    <!-- Fortune App Specific Colors -->
+    <color name="mystic_purple">#FF6B47DB</color>
+    <color name="mystic_pink">#FFE91E63</color>
+    <color name="mystic_gold">#FFFFD700</color>
+    <color name="mystic_dark">#FF2E1065</color>
+    <color name="mystic_light">#FFF3E5F5</color>
+
+    <!-- Card Colors -->
+    <color name="card_background">#0d1424</color>
+    <color name="card_background_dark">#FF1E1E1E</color>
+    <color name="card_shadow">#1A000000</color>
+
+    <!-- Button Colors -->
+    <color name="button_primary">#3796f1</color>
+    <color name="button_secondary">#FFE91E63</color>
+    <color name="button_disabled">#FFE0E0E0</color>
+    <color name="button_text_primary">#FFFFFFFF</color>
+    <color name="button_text_secondary">#FF6B47DB</color>
+
+    <!-- Online/Offline Colors -->
+    <color name="online_color">#FF4CAF50</color>
+    <color name="offline_color">#FFF44336</color>
+
+    <!-- Premium Colors -->
+    <color name="premium_color">#FFFFD700</color>
+    <color name="standard_color">#FF757575</color>
+
+    <!-- Navigation Colors -->
+    <color name="bottom_nav_selected">#3796f1</color>
+    <color name="bottom_nav_unselected">#FF9E9E9E</color>
+
+    <!-- Card Selection Colors -->
+    <color name="selected_card_background">#FFF3E5F5</color>
+    <color name="card_border_selected">#FF6B47DB</color>
+    <color name="card_border_unselected">#FFE0E0E0</color>
+
+    <!-- Progress Colors -->
+    <color name="progress_primary">#FF6B47DB</color>
+    <color name="progress_secondary">#FFE91E63</color>
+    <color name="progress_background">#FFE0E0E0</color>
+
+    <!-- Splash Colors -->
+    <color name="splash_background">#000012</color>
+    <color name="splash_text">#FFFFFFFF</color>
+
+    <!-- Horoscope Colors -->
+    <color name="aries">#FFFF4444</color>
+    <color name="taurus">#FF8BC34A</color>
+    <color name="gemini">#FFFFEB3B</color>
+    <color name="cancer">#FF9C27B0</color>
+    <color name="leo">#FFFF9800</color>
+    <color name="virgo">#FF795548</color>
+    <color name="libra">#FFFF5722</color>
+    <color name="scorpio">#FF9E9E9E</color>
+    <color name="sagittarius">#FF3F51B5</color>
+    <color name="capricorn">#FF607D8B</color>
+    <color name="aquarius">#FF00BCD4</color>
+    <color name="pisces">#FF4CAF50</color>
+
+    <!-- Tarot Colors -->
+    <color name="tarot_gold">#FFFFD700</color>
+    <color name="tarot_purple">#FF6B47DB</color>
+    <color name="tarot_red">#FFE91E63</color>
+    <color name="tarot_black">#FF000000</color>
+
+    <!-- Love Compatibility Colors -->
+    <color name="love_red">#FFFF1744</color>
+    <color name="love_pink">#FFFF80AB</color>
+    <color name="love_light_pink">#FFFCE4EC</color>
+
+    <!-- Coin Colors -->
+    <color name="coin_gold">#FFFFD700</color>
+    <color name="coin_silver">#FFC0C0C0</color>
+    <color name="coin_bronze">#FFCD7F32</color>
+
+    <!-- Transparent Colors -->
+    <color name="transparent">#00000000</color>
+    <color name="semi_transparent_black">#80000000</color>
+    <color name="semi_transparent_white">#80FFFFFF</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#FF6B47DB</color>
+    <color name="gradient_end">#FFE91E63</color>
+    <color name="gradient_middle">#FFAB47BC</color>
+
+    <!-- Rating Colors -->
+    <color name="star_filled">#FFFFD700</color>
+    <color name="star_empty">#FFE0E0E0</color>
+
+    <!-- Input Colors -->
+    <color name="input_background">#FAFAFA</color>
+    <color name="input_border">#FFE0E0E0</color>
+    <color name="input_border_focused">#3796f1</color>
+    <color name="input_text">#FF212121</color>
+    <color name="input_hint">#FF757575</color>
+
+    <!-- Divider Colors -->
+    <color name="divider_light">#FFE0E0E0</color>
+    <color name="divider_dark">#FF424242</color>
+
+    <!-- Overlay Colors -->
+    <color name="overlay_dark">#CC000000</color>
+    <color name="overlay_light">#CCFFFFFF</color>
+
+    <!-- Special Effects -->
+    <color name="shadow_color">#1A000000</color>
+    <color name="highlight_color">#FFFFFF</color>
+    <color name="ripple_color">#1F6B47DB</color>
+
+    <!-- Updated Primary Colors -->
+    <color name="primary_color_dark">#3700B3</color>
+    <color name="primary_color_light">#BB86FC</color>
+    <color name="accent_color">#03DAC6</color>
+
+    <!-- Background Colors -->
+    <color name="background_color">#060e19</color>
+    <color name="surface_color">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary_color">#FFFFFF</color>
+    <color name="text_secondary_color">#FFFFFF</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#B3FFFFFF</color>
+
+    <!-- Basic Colors -->
+    <color name="white_70">#B3FFFFFF</color>
+
+    <!-- UI Element Colors -->
+    <color name="divider">#E0E0E0</color>
+    <color name="light_bg">#F5F5F5</color>
+    <color name="overlay_dark_light">#66000000</color>
+
+    <!-- Premium and Special Colors -->
+    <color name="premium_card_bg">#4A148C</color>
+    <color name="gold">#FFD700</color>
+    <color name="highlight_text">#FF5722</color>
+    <color name="highlight_card_bg">#FFF3E0</color>
+
+    <!-- Status Colors -->
+    <color name="green">#4CAF50</color>
+    <color name="orange">#FF9800</color>
+    <color name="red">#F44336</color>
+
+    <!-- Button Colors -->
+    <color name="button_primary_pressed">#3700B3</color>
+    <color name="profile_border">#E0E0E0</color>
+    <color name="border_color">#E0E0E0</color>
+
+    <!-- Error and Success Colors -->
+    <color name="error_color">#B00020</color>
+    <color name="success_color">#4CAF50</color>
+    <color name="warning_color">#FF9800</color>
+
+    <!-- Material 3 Kozmik Mistik Theme Colors -->
+    <color name="m3_cosmic_primary">#1a0033</color>
+    <color name="m3_cosmic_primary_variant">#2d0052</color>
+    <color name="m3_cosmic_secondary">#0a1551</color>
+    <color name="m3_cosmic_secondary_variant">#1a2870</color>
+    <color name="m3_cosmic_tertiary">#ffd700</color>
+    <color name="m3_cosmic_tertiary_variant">#ffed4e</color>
+    
+    <!-- M3 Surface Colors -->
+    <color name="m3_cosmic_surface">#0a0a1a</color>
+    <color name="m3_cosmic_surface_variant">#1a1a3a</color>
+    <color name="m3_cosmic_surface_tint">#2a1a4a</color>
+    
+    <!-- M3 Background Colors -->
+    <color name="m3_cosmic_background">#000012</color>
+    <color name="m3_cosmic_background_elevated">#0a0a2a</color>
+    
+    <!-- M3 On Colors -->
+    <color name="m3_cosmic_on_primary">#ffffff</color>
+    <color name="m3_cosmic_on_secondary">#ffffff</color>
+    <color name="m3_cosmic_on_tertiary">#1a0033</color>
+    <color name="m3_cosmic_on_surface">#e1e1ff</color>
+    <color name="m3_cosmic_on_background">#e1e1ff</color>
+    
+    <!-- M3 Container Colors -->
+    <color name="m3_cosmic_primary_container">#3a1a5a</color>
+    <color name="m3_cosmic_secondary_container">#2a3571</color>
+    <color name="m3_cosmic_tertiary_container">#4a3a00</color>
+    
+    <!-- M3 Outline Colors -->
+    <color name="m3_cosmic_outline">#5a5a7a</color>
+    <color name="m3_cosmic_outline_variant">#3a3a5a</color>
+    
+    <!-- Cosmic Special Effects -->
+    <color name="m3_cosmic_glow">#9966ff</color>
+    <color name="m3_cosmic_star">#fffacd</color>
+    <color name="m3_cosmic_nebula">#4a0080</color>
+    <color name="m3_cosmic_shimmer">#e6e6ff</color>
+
+</resources>

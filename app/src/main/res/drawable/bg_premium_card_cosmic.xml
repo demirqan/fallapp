@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/m3_cosmic_tertiary">
+    <item>
+        <layer-list>
+            <!-- Glow effect -->
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="16dp" />
+                    <gradient
+                        android:type="radial"
+                        android:gradientRadius="150%"
+                        android:centerX="0.5"
+                        android:centerY="0.5"
+                        android:startColor="#40FFD700"
+                        android:endColor="#00FFD700" />
+                </shape>
+            </item>
+            
+            <!-- Card background -->
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="16dp" />
+                    <gradient
+                        android:angle="45"
+                        android:startColor="#2A1a0033"
+                        android:centerColor="#3A2d0052"
+                        android:endColor="#2A1a0033"
+                        android:type="linear" />
+                    <stroke
+                        android:width="2dp"
+                        android:color="@color/m3_cosmic_tertiary" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</ripple>

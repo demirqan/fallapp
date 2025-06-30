@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/mystic_light"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Heart shapes -->
+    <path
+        android:fillColor="@color/love_red"
+        android:pathData="M180,100C185,95 195,95 200,100C205,95 215,95 220,100C225,105 225,115 220,120L200,150L180,120C175,115 175,105 180,100Z" />
+
+    <path
+        android:fillColor="@color/love_red"
+        android:pathData="M160,160C165,155 175,155 180,160C185,155 195,155 200,160C205,165 205,175 200,180L180,210L160,180C155,175 155,165 160,160Z" />
+
+    <path
+        android:fillColor="@color/love_red"
+        android:pathData="M220,160C225,155 235,155 240,160C245,155 255,155 260,160C265,165 265,175 260,180L240,210L220,180C215,175 215,165 220,160Z" />
+
+    <!-- Circle (converted to path) -->
+    <path
+        android:fillColor="@color/mystic_gold"
+        android:pathData="M200,205C213.81,205 225,216.19 225,230C225,243.81 213.81,255 200,255C186.19,255 175,243.81 175,230C175,216.19 186.19,205 200,205Z" />
+
+</vector>

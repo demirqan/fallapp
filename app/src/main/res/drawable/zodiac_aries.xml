@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Aries zodiac symbol placeholder -->
+    <path
+        android:fillColor="@color/m3_cosmic_tertiary"
+        android:strokeColor="@color/m3_cosmic_tertiary"
+        android:strokeWidth="2"
+        android:pathData="M30,90 L60,30 L90,90 M45,60 L75,60"/>
+</vector>

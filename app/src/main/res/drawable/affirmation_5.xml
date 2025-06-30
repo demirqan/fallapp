@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="300dp"
+    android:viewportWidth="400"
+    android:viewportHeight="300">
+
+    <!-- Background rectangle -->
+    <path
+        android:fillColor="@color/love_light_pink"
+        android:pathData="M0,0L400,0L400,300L0,300Z" />
+
+    <!-- Heart shape -->
+    <path
+        android:fillColor="@color/love_red"
+        android:pathData="M180,120C185,115 195,115 200,120C205,115 215,115 220,120C225,125 225,135 220,140L200,170L180,140C175,135 175,125 180,120Z" />
+
+    <!-- Left circle -->
+    <path
+        android:fillColor="@color/love_pink"
+        android:alpha="0.5"
+        android:pathData="M150,175C163.81,175 175,186.19 175,200C175,213.81 163.81,225 150,225C136.19,225 125,213.81 125,200C125,186.19 136.19,175 150,175Z" />
+
+    <!-- Right circle -->
+    <path
+        android:fillColor="@color/love_pink"
+        android:alpha="0.5"
+        android:pathData="M250,175C263.81,175 275,186.19 275,200C275,213.81 263.81,225 250,225C236.19,225 225,213.81 225,200C225,186.19 236.19,175 250,175Z" />
+
+</vector>

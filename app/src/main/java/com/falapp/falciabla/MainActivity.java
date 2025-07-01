@@ -35,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         // Check if it's the first run and initialize user
         checkFirstRun();
 
+        Button btnShowMyReadings = findViewById(R.id.btnShowMyReadings);
+
+        btnShowMyReadings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MyReadingsActivity.class);
+            startActivity(intent);
+        });
+
         // Find views
         tvCoins = findViewById(R.id.tv_coins);
         bottomNavigationView = findViewById(R.id.bottom_navigation);

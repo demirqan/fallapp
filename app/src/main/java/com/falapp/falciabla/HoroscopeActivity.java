@@ -92,6 +92,7 @@ public class HoroscopeActivity extends AppCompatActivity {
         cardZodiacSign = findViewById(R.id.card_zodiac_sign);
         progressBar = findViewById(R.id.progress_bar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+
     }
 
     private void setupToolbar() {
@@ -224,15 +225,18 @@ public class HoroscopeActivity extends AppCompatActivity {
     private void getHoroscope() {
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
 
+        // 🔒 Yeterli coin kontrolü sadece premium olmayanlar için
         if (!isPremium && currentUser.getCoins() < HOROSCOPE_COST) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, CoinPurchaseActivity.class));
             return;
         }
 
-        // Deduct coins from user
-        currentUser.removeCoins(HOROSCOPE_COST);
-        dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        // ✅ Coin sadece premium olmayanlardan düşülür
+        if (!isPremium) {
+            currentUser.removeCoins(HOROSCOPE_COST);
+            dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        }
 
         // Show progress bar
         progressBar.setVisibility(View.VISIBLE);
@@ -243,12 +247,8 @@ public class HoroscopeActivity extends AppCompatActivity {
         new Thread(() -> {
             final String horoscope = chatGPTService.getHoroscopeReading(currentZodiacSign, currentPeriod);
 
-            // Update UI on main thread
             runOnUiThread(() -> {
-                // Hide progress bar
                 progressBar.setVisibility(View.GONE);
-
-                // Show horoscope and button
                 String shortHoroscope = getShortHoroscope(horoscope);
                 tvHoroscope.setText(shortHoroscope);
                 tvHoroscope.setVisibility(View.VISIBLE);

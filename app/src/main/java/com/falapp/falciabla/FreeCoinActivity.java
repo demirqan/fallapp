@@ -2,7 +2,9 @@ package com.falapp.falciabla;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -79,6 +81,18 @@ public class FreeCoinActivity extends AppCompatActivity {
         currentUser = dbHelper.getUser();
         updateCoinsDisplay();
         loadRewardedAd();  // Reklamı her dönüşte tekrar dene
+        SharedPreferences prefs = getSharedPreferences("FalAppPrefs", MODE_PRIVATE);
+        long lastShareTime = prefs.getLong("last_share_time", 0);
+        long currentTime = System.currentTimeMillis();
+
+        if (currentTime - lastShareTime < 7 * 24 * 60 * 60 * 1000) {
+            btnShareApp.setEnabled(false);
+            btnShareApp.setText("Paylaşıldı (7 gün sonra)");
+        } else {
+            btnShareApp.setEnabled(true);
+            btnShareApp.setText("Uygulamayı Paylaş");
+        }
+
     }
 
     private void initViews() {
@@ -153,34 +167,50 @@ public class FreeCoinActivity extends AppCompatActivity {
     }
 
     private void shareApp() {
+        SharedPreferences prefs = getSharedPreferences("FalAppPrefs", MODE_PRIVATE);
+        long lastShareTime = prefs.getLong("last_share_time", 0);
+        long currentTime = System.currentTimeMillis();
 
-        Log.d("ShareApp", "shareApp() metodu çağrıldı");
-        // Create share intent
+        // 7 gün = 7 * 24 * 60 * 60 * 1000 ms
+        long sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000L;
+
+        if (currentTime - lastShareTime < sevenDaysInMillis) {
+            long remainingTime = sevenDaysInMillis - (currentTime - lastShareTime);
+            long remainingSeconds = remainingTime / 1000;
+            long days = remainingSeconds / (24 * 3600);
+            long hours = (remainingSeconds % (24 * 3600)) / 3600;
+            long minutes = (remainingSeconds % 3600) / 60;
+            long seconds = remainingSeconds % 60;
+
+            String timeMessage = String.format("Paylaşmak için bekleyin: %d gün %02d:%02d:%02d", days, hours, minutes, seconds);
+            Toast.makeText(this, timeMessage, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Paylaşım intent'i başlat
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Fal Uygulaması");
         shareIntent.putExtra(Intent.EXTRA_TEXT,
                 "Fal Uygulaması ile geleceğinizi keşfedin! Hemen indirin: https://play.google.com/store/apps/details?id=com.falapp.falciabla");
 
-        // Start share activity
         startActivity(Intent.createChooser(shareIntent, "Uygulamamızı Paylaşın"));
 
-        // Add coins after sharing
-        new android.os.Handler().postDelayed(() -> {
+        // 2 saniye sonra altın ver ve zamanı kaydet
+        new Handler().postDelayed(() -> {
             if (!isFinishing()) {
                 addCoinsToUser(10);
                 Toast.makeText(FreeCoinActivity.this,
                         "Paylaşım yaptığınız için 10 altın kazandınız!", Toast.LENGTH_SHORT).show();
 
-                // Disable button temporarily
+                // Paylaşım zamanını kaydet
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putLong("last_share_time", System.currentTimeMillis());
+                editor.apply();
+
+                // Butonu devre dışı bırak
                 btnShareApp.setEnabled(false);
-                btnShareApp.setText("Bekleyin (24 saat)");
-                new android.os.Handler().postDelayed(() -> {
-                    if (!isFinishing()) {
-                        btnShareApp.setEnabled(true);
-                        btnShareApp.setText("Uygulamayı Paylaş");
-                    }
-                }, 20000); // In real app, this would be longer (e.g., 24 hours)
+                btnShareApp.setText("Paylaşıldı (7 gün sonra tekrar)");
             }
         }, 2000);
     }

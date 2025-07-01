@@ -117,26 +117,29 @@ public class DreamInterpretationActivity extends AppCompatActivity {
     }
 
     private void validateAndInterpretDream() {
-        // Get dream text
         String dreamText = etDream.getText().toString().trim();
 
-        // Validate dream text
         if (dreamText.isEmpty()) {
             etDream.setError("Lütfen rüyanızı anlatın");
             etDream.requestFocus();
             return;
         }
 
-        // Check if user has enough coins
-        if (currentUser.getCoins() < INTERPRETATION_COST) {
+        // Premium durumu kontrolü
+        boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
+
+        // Premium olmayan kullanıcılar için coin kontrolü
+        if (!isPremium && currentUser.getCoins() < INTERPRETATION_COST) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, CoinPurchaseActivity.class));
             return;
         }
 
-        // Deduct coins from user
-        currentUser.removeCoins(INTERPRETATION_COST);
-        dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        // ✅ Coin sadece premium olmayan kullanıcılardan düşülür
+        if (!isPremium) {
+            currentUser.removeCoins(INTERPRETATION_COST);
+            dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        }
 
         // Show progress bar
         progressBar.setVisibility(View.VISIBLE);
@@ -147,13 +150,10 @@ public class DreamInterpretationActivity extends AppCompatActivity {
         new Thread(() -> {
             final String interpretation = chatGPTService.getDreamInterpretation(dreamText);
 
-            // Update UI on main thread
             runOnUiThread(() -> {
-                // Hide progress bar
                 progressBar.setVisibility(View.GONE);
                 btnInterpret.setEnabled(true);
 
-                // Show interpretation
                 tvInterpretation.setText(interpretation);
                 tvInterpretation.setVisibility(View.VISIBLE);
             });

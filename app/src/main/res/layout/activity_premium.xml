@@ -67,7 +67,7 @@
                         android:id="@+id/tv_premium_benefits"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Premium üyelik avantajları:\n\n• Sınırsız fal bakma\n• Reklamsız deneyim\n• Özel falcı erişimi\n• Gelişmiş özellikler\n• Öncelikli destek"
+                        android:text="Premium üyelik avantajları:\n\n• Sınırsız fal bakma\n• Sınırsız Burç Yorumları\n• Özel falcı erişimi\n• Gelişmiş özellikler\n• Öncelikli destek"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                         android:textColor="@color/m3_cosmic_on_surface"
                         android:fontFamily="@font/regular"

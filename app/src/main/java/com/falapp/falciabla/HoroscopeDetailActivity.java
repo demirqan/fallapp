@@ -1,9 +1,12 @@
 package com.falapp.falciabla;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +23,7 @@ public class HoroscopeDetailActivity extends AppCompatActivity {
     private ChatGPTService chatGPTService;
 
     private MaterialToolbar toolbar;
+    private Button btnShare;
     private TabLayout tabLayout;
     private ImageView ivZodiacSign;
     private TextView tvZodiacSign;
@@ -47,6 +51,7 @@ public class HoroscopeDetailActivity extends AppCompatActivity {
             currentPeriod = "Günlük"; // Default period
         }
 
+
         // Initialize database helper and services
         dbHelper = new DatabaseHelper(this);
         chatGPTService = new ChatGPTService();
@@ -56,6 +61,22 @@ public class HoroscopeDetailActivity extends AppCompatActivity {
 
         // Initialize views
         initViews();
+
+        btnShare.setOnClickListener(v -> {
+            String horoscopeText = tvHoroscope.getText().toString().trim();
+
+            if (horoscopeText.isEmpty()) {
+                Toast.makeText(HoroscopeDetailActivity.this, "Paylaşılacak yorum yok.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Burç Yorumum (" + currentZodiacSign + ")");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, horoscopeText);
+
+            startActivity(Intent.createChooser(shareIntent, "Yorumu Paylaş"));
+        });
 
         // Set up toolbar
         setupToolbar();
@@ -77,6 +98,7 @@ public class HoroscopeDetailActivity extends AppCompatActivity {
         tvZodiacSign = findViewById(R.id.tv_zodiac_sign);
         tvHoroscope = findViewById(R.id.tv_horoscope);
         progressBar = findViewById(R.id.progress_bar);
+        btnShare = findViewById(R.id.btn_share);
     }
 
     private void setupToolbar() {

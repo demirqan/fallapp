@@ -316,6 +316,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="16dp"
+                android:visibility="gone"
                 app:cardElevation="4dp"
                 app:cardBackgroundColor="@android:color/transparent"
                 android:layout_marginBottom="16dp"
@@ -337,6 +338,7 @@
                         android:background="@drawable/bg_coin_icon"
                         android:padding="12dp"
                         android:src="@drawable/ic_task"
+
                         android:tint="@color/m3_cosmic_on_tertiary"
                         android:layout_marginEnd="16dp" />
 
@@ -352,6 +354,7 @@
                             android:text="Görev Tamamla"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                             android:textColor="@color/m3_cosmic_on_surface"
+                            android:visibility="gone"
                             android:fontFamily="@font/bold" />
 
                         <TextView
@@ -361,6 +364,7 @@
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                             android:textColor="@color/m3_cosmic_on_surface"
                             android:alpha="0.8"
+                            android:visibility="gone"
                             android:fontFamily="@font/regular" />
 
                     </LinearLayout>

@@ -80,14 +80,23 @@ public class LoveCompatibilityInputActivity extends AppCompatActivity {
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                android.R.style.Theme_Holo_Light_Dialog_NoActionBar, // Klasik spinner görünüm
                 (view, year1, monthOfYear, dayOfMonth) -> {
                     selectedBirthDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1;
                     tvBirthDate.setText(selectedBirthDate);
-                }, year, month, day);
+                },
+                year, month, day
+        );
 
-        // Set max date to today
+        // Spinner görünümünü aktif et
+        datePickerDialog.getDatePicker().setCalendarViewShown(false);
+        datePickerDialog.getDatePicker().setSpinnersShown(true);
+
+        // Bugünden ileri tarih seçilmesin
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
         datePickerDialog.show();
     }
 

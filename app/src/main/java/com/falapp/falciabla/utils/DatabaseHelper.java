@@ -120,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private void initializeFortuneTellers(SQLiteDatabase db) {
-        String[] names = {"Sinem", "Gamze", "Ayşe", "Merve", "Fatma", "Gizem", "Zeynep", "Dilara"};
+        String[] names = {"Aslı", "Hayal", "Kübra", "Merve", "Cansu", "Müge", "Zeynep", "Samet"};
         String[] specialties = {
                 "aşk,para,sağlık",
                 "kariyer,aile,arkadaş",

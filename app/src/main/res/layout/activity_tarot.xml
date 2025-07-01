@@ -172,9 +172,10 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/button_cosmic_outline"
                 android:text="@string/reset_cards"
-                android:textColor="@color/m3_cosmic_primary"
+                android:textColor="@color/white"
                 android:fontFamily="@font/medium"
-                android:visibility="gone" />
+                android:visibility="gone"
+               />
 
             <Button
                 android:id="@+id/btn_full_reading"

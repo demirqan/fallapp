@@ -2,6 +2,7 @@ package com.falapp.falciabla;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,28 +19,32 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TarotActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private User currentUser;
+
+    private Random random = new Random();
     private ChatGPTService chatGPTService;
 
     private MaterialToolbar toolbar;
     private ImageView[] tarotCards;
+    private static final int TAROT_COST = 10; // Her yorum başına 5 coin
+    private List<String> selectedCardNames = new ArrayList<>(); // 🔥 bunu ekle
     private TextView tvInterpretation;
     private Button btnReset;
     private View progressBar;
 ;
 
     private static final int CARD_COUNT = 6;
-    private static final int TAROT_COST = 10; // Coins required for tarot reading
+
 
     private String[] cardNames = {
-            "Büyücü", "Yüksek Rahibe", "İmparatoriçe", "İmparator", "Hierophant", "Aşıklar",
-            "Savaş Arabası", "Güç", "Ermiş", "Kader Çarkı", "Adalet", "Asılmış Adam",
-            "Ölüm", "Denge", "Şeytan", "Yıkılan Kule", "Yıldız", "Ay",
-            "Güneş", "Yargı", "Dünya", "Soytarı"
+
+            "gunes", "yargi_kilici", "aptallik", "yikilan_kule", "kral", "asilmis_adam",
+            "bas_rahip", "yildiz","heybetli_kale", "kirmizi_sarap", "dogan_gunes", "tanri_eli"
     };
 
     private List<Integer> selectedCardIndices = new ArrayList<>();
@@ -142,8 +147,9 @@ public class TarotActivity extends AppCompatActivity {
         */
     }
 
+
+
     private void onCardClicked(int cardIndex) {
-        // Eğer kart zaten seçilmişse geri dön
         if (selectedCardIndices.contains(cardIndex)) {
             return;
         }
@@ -151,24 +157,33 @@ public class TarotActivity extends AppCompatActivity {
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
                 .getBoolean("is_premium", false);
 
-        // İlk kart seçiliyorsa, coin kontrolü yap ve premium değilse altını düşür
-        if (selectedCardIndices.isEmpty() && !isPremium) {
-            if (currentUser.getCoins() < TAROT_COST) {
-                Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, CoinPurchaseActivity.class));
-                return;
-            }
+        if (selectedCardIndices.isEmpty()) {
+            if (!isPremium) {
+                if (currentUser.getCoins() < TAROT_COST) {
+                    Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, CoinPurchaseActivity.class));
+                    return;
+                }
 
-            currentUser.removeCoins(TAROT_COST);
-            dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+                currentUser.removeCoins(TAROT_COST);
+                dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+            }
         }
 
-        // Kartı seçilenlere ekle
+        if (selectedCardIndices.size() >= 6) {
+            Toast.makeText(this, "En fazla 6 kart seçebilirsiniz.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         selectedCardIndices.add(cardIndex);
 
-        // Rastgele kart seçimi ve görsel atama
-        int randomCardIndex = (int) (Math.random() * cardNames.length);
+        int randomCardIndex = random.nextInt(cardNames.length);
         String cardName = cardNames[randomCardIndex];
+
+        // Logla
+        Log.d("TarotActivity", "Seçilen kart: " + cardName);
+
+        tarotCards[cardIndex].setTag(cardName);
 
         int cardResourceId = getResources().getIdentifier(
                 "tarot_" + cardName.toLowerCase().replace(" ", "_"), "drawable", getPackageName());
@@ -178,57 +193,45 @@ public class TarotActivity extends AppCompatActivity {
             tarotCards[cardIndex].setImageResource(R.drawable.tarot_default);
         }
 
-        // En az bir kart seçilince yorum getir
-        if (!selectedCardIndices.isEmpty()) {
-            getInterpretation();
-        }
+        // Burada sınıf seviyesindeki listeyi kullan
+        selectedCardNames.add(cardName);
+
+        getInterpretation();
     }
 
+
     private void getInterpretation() {
-        // Show progress bar
+        if (selectedCardNames.isEmpty()) return;
+
         progressBar.setVisibility(View.VISIBLE);
         tvInterpretation.setVisibility(View.GONE);
 
-        // Get selected card names
-        String[] selectedCards = new String[selectedCardIndices.size()];
-        for (int i = 0; i < selectedCardIndices.size(); i++) {
-            int randomCardIndex = (int) (Math.random() * cardNames.length);
-            selectedCards[i] = cardNames[randomCardIndex];
-        }
+        String[] selectedCards = selectedCardNames.toArray(new String[0]);
 
-        // Get interpretation in background thread
         new Thread(() -> {
             final String interpretation = chatGPTService.getTarotReading(selectedCards);
 
-            // Update UI on main thread
             runOnUiThread(() -> {
-                // Hide progress bar
                 progressBar.setVisibility(View.GONE);
-
-                // Show interpretation
                 tvInterpretation.setText(interpretation);
                 tvInterpretation.setVisibility(View.VISIBLE);
-
-                // Show reset button
-                btnReset.setVisibility(View.VISIBLE);
+               // btnReset.setVisibility(View.VISIBLE);
             });
         }).start();
     }
 
-    private void resetCards() {
-        // Clear selected cards
-        selectedCardIndices.clear();
 
-        // Reset all cards to back side
+    private void resetCards() {
+        selectedCardIndices.clear();
+        selectedCardNames.clear();
+
         for (int i = 0; i < CARD_COUNT; i++) {
             tarotCards[i].setImageResource(R.drawable.cardback);
+            tarotCards[i].setTag(null);
         }
 
-        // Clear interpretation
         tvInterpretation.setText("");
         tvInterpretation.setVisibility(View.GONE);
-
-        // Hide reset button
         btnReset.setVisibility(View.GONE);
     }
 }

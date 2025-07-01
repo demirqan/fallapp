@@ -139,7 +139,7 @@
 
     <!-- Tarot -->
     <string name="select_tarot_cards">Tarot Kartlarınızı Seçin</string>
-    <string name="tarot_instruction">İçinizden gelen sesle 3 kart seçin. Kartlarınız geleceğinizle ilgili önemli ipuçları verecek.</string>
+    <string name="tarot_instruction">Kalbinizi dinleyin ve bir kart seçin. Cevaplar kartların içinde olabilir..</string>
     <string name="tarot_card">Tarot Kartı</string>
     <string name="reset_cards">Kartları Sıfırla</string>
     <string name="get_detailed_reading">Detaylı Fal Al</string>

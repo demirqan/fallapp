@@ -174,7 +174,7 @@ public class TarotFragment extends Fragment {
                 tvInterpretation.setVisibility(View.VISIBLE);
 
 
-                btnReset.setVisibility(View.VISIBLE);
+             //   btnReset.setVisibility(View.VISIBLE);
             });
         }
     }

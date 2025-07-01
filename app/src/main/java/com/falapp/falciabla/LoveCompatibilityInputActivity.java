@@ -115,21 +115,23 @@ public class LoveCompatibilityInputActivity extends AppCompatActivity {
             return;
         }
 
-        // Check if user has enough coins
-        boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
+        // Premium kontrolü (hem veritabanından hem SharedPreferences'tan kontrol edilebilir)
+        boolean isPremium = currentUser.isPremium(); // 🔄 veritabanı üzerinden net kontrol
 
-// Premium değilse coin kontrolü yap
+        // Altın yeterli değilse ve kullanıcı premium değilse
         if (!isPremium && currentUser.getCoins() < COMPATIBILITY_COST) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, CoinPurchaseActivity.class));
             return;
         }
 
-        // Deduct coins from user
-        currentUser.removeCoins(COMPATIBILITY_COST);
-        dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        // Eğer premium değilse, coin düş
+        if (!isPremium) {
+            currentUser.removeCoins(COMPATIBILITY_COST);
+            dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
+        }
 
-        // Open compatibility result activity
+        // Devam et
         Intent intent = new Intent(this, LoveCompatibilityResultActivity.class);
         intent.putExtra("person_name", name);
         intent.putExtra("person_birth_date", selectedBirthDate);

@@ -187,20 +187,7 @@ public class BillingManager implements PurchasesUpdatedListener {
      * Tamamlanmamış satın alımları sorgula
      */
     private void queryPurchases() {
-        // Tek seferlik ürünleri sorgula
-        QueryPurchasesParams inappParams = QueryPurchasesParams.newBuilder()
-                .setProductType(BillingClient.ProductType.INAPP)
-                .build();
-
-        billingClient.queryPurchasesAsync(inappParams, new PurchasesResponseListener() {
-            @Override
-            public void onQueryPurchasesResponse(@NonNull BillingResult billingResult, @NonNull List<Purchase> purchases) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    // Satın alımları işle
-                    processPurchases(purchases);
-                }
-            }
-        });
+        // ...
 
         // Abonelik ürünlerini sorgula
         QueryPurchasesParams subsParams = QueryPurchasesParams.newBuilder()
@@ -213,6 +200,28 @@ public class BillingManager implements PurchasesUpdatedListener {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     // Satın alımları işle
                     processPurchases(purchases);
+
+                    // ✅ Gerçek zamanlı premium kontrolü
+                    boolean isCurrentlyPremium = false;
+                    for (Purchase purchase : purchases) {
+                        for (String productId : purchase.getProducts()) {
+                            if ((productId.equals(SUBSCRIPTION_PREMIUM_MONTHLY) || productId.equals(SUBSCRIPTION_PREMIUM_YEARLY))
+                                    && purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                                isCurrentlyPremium = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Durumu kaydet
+                    SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                    prefs.edit().putBoolean("is_premium", isCurrentlyPremium).apply();
+                    if (currentUser != null) {
+                        currentUser.setPremium(isCurrentlyPremium);
+                        dbHelper.updateUserPremium(currentUser.getId(), isCurrentlyPremium);
+                    }
+
+                    Log.d(TAG, "🔁 Premium durumu güncellendi: " + isCurrentlyPremium);
                 }
             }
         });

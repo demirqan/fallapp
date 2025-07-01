@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
             </FrameLayout>
 
@@ -85,7 +85,8 @@
                 android:background="@android:color/holo_blue_dark"
                 android:text="@string/share_reading"
                 android:textColor="@color/m3_cosmic_primary"
-                android:fontFamily="@font/medium" />
+                android:fontFamily="@font/medium"
+                android:visibility="gone" />
 
         </LinearLayout>
 

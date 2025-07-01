@@ -40,7 +40,7 @@ public class HoroscopeActivity extends AppCompatActivity {
 
     private String currentZodiacSign = "Koç"; // Default sign
     private String currentPeriod = "Günlük"; // Default period
-    private static final int HOROSCOPE_COST = 10; // Coins required for horoscope reading
+    private static final int HOROSCOPE_COST = 5; // Coins required for horoscope reading
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

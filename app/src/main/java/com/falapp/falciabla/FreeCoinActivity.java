@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -136,19 +137,12 @@ public class FreeCoinActivity extends AppCompatActivity {
     }
 
     private void watchAdForCoins() {
+        btnWatchAd.setEnabled(false); // Tıklama sırasında pasifleştir
         if (rewardedAd != null) {
-            // Reklam zaten hazırsa hemen göster
-            rewardedAd.show(this, rewardItem -> {
-                if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
-
-                addCoinsToUser(5);
-                Toast.makeText(this, "Reklam izlediğiniz için 5 altın kazandınız!", Toast.LENGTH_SHORT).show();
-                rewardedAd = null;
-                loadRewardedAd();
-            });
-
+            // Reklam hazırsa doğrudan göster
+            showRewardedAd();
         } else {
-            // Reklam hazır değilse, yüklenince otomatik göster
+            // Reklam hazır değilse: Yükleme ekranı göster
             loadingDialog = new AlertDialog.Builder(this)
                     .setTitle("Reklam Yükleniyor")
                     .setMessage("Lütfen birkaç saniye bekleyin...")
@@ -160,32 +154,56 @@ public class FreeCoinActivity extends AppCompatActivity {
             AdRequest adRequest = new AdRequest.Builder().build();
             RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917", adRequest, new RewardedAdLoadCallback() {
                 @Override
-                public void onAdLoaded(RewardedAd ad) {
+                public void onAdLoaded(@NonNull RewardedAd ad) {
                     rewardedAd = ad;
                     isAdLoading = false;
+                    Log.d("AdTest", "✅ Reklam yüklendi!");
+                    Toast.makeText(FreeCoinActivity.this, "Reklam başarıyla yüklendi", Toast.LENGTH_SHORT).show();
 
-                    if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
+                    if (loadingDialog != null && loadingDialog.isShowing()) {
+                        loadingDialog.dismiss();
+                    }
 
-                    rewardedAd.show(FreeCoinActivity.this, rewardItem -> {
-                        addCoinsToUser(5);
-                        Toast.makeText(FreeCoinActivity.this, "Reklam izlediğiniz için 5 altın kazandınız!", Toast.LENGTH_SHORT).show();
-                        rewardedAd = null;
-                        loadRewardedAd();
-                    });
+                    showRewardedAd();
                 }
 
                 @Override
-                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
+                public void onAdFailedToLoad(@NonNull com.google.android.gms.ads.LoadAdError adError) {
                     rewardedAd = null;
                     isAdLoading = false;
 
-                    if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
-                    Toast.makeText(FreeCoinActivity.this, "Reklam şu an hazır değil. Lütfen daha sonra tekrar deneyin.", Toast.LENGTH_SHORT).show();
+                    Log.e("AdTest", "❌ Reklam yüklenemedi: " + adError.getMessage());
 
-                    // 5 saniye sonra tekrar denemek istersen:
+                    if (loadingDialog != null && loadingDialog.isShowing()) {
+                        loadingDialog.dismiss();
+                    }
+
+                    Toast.makeText(FreeCoinActivity.this, "Reklam şu an yüklenemedi. Lütfen daha sonra tekrar deneyin.", Toast.LENGTH_SHORT).show();
+
+                    // Gerekirse 5 saniye sonra tekrar yüklemeyi tetikle
                     new Handler().postDelayed(() -> loadRewardedAd(), 5000);
                 }
             });
+
+            // 5 saniye sonra hala yüklenmediyse dialog'u kapat (önlem)
+            new Handler().postDelayed(() -> {
+                if (isAdLoading && loadingDialog != null && loadingDialog.isShowing()) {
+                    loadingDialog.dismiss();
+                    Toast.makeText(this, "Reklam zaman aşımına uğradı.", Toast.LENGTH_SHORT).show();
+                }
+            }, 5000);
+        }
+    }
+    private void showRewardedAd() {
+        if (rewardedAd != null) {
+            rewardedAd.show(this, rewardItem -> {
+                addCoinsToUser(5);
+                Toast.makeText(this, "Reklam izlediğiniz için 5 altın kazandınız!", Toast.LENGTH_SHORT).show();
+                rewardedAd = null;
+                loadRewardedAd();
+            });
+        } else {
+            Toast.makeText(this, "Reklam şu an hazır değil.", Toast.LENGTH_SHORT).show();
         }
     }
 

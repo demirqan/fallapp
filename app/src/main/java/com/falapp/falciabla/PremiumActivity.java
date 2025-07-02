@@ -94,6 +94,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         super.onResume();
         // Önce güncelle
         currentUser = dbHelper.getUser();
+        billingManager.queryPurchases(); // <--- EKLE
 
         Log.d("PremiumCheck", "Premium flag from DB: " + currentUser.isPremium());
 
@@ -273,24 +274,26 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
 
     @Override
     public void onPurchaseSuccess(String productId, int coins, boolean isPremium) {
-        Toast.makeText(this, "Premium üyeliğiniz başarıyla aktifleştirildi!", Toast.LENGTH_SHORT).show();
+        Log.d("PremiumCheck", "🎯 onPurchaseSuccess: " + productId + " | premium=" + isPremium + " | coins=" + coins);
 
-        if (coins > 0) {
-            Toast.makeText(this, "Bonus olarak " + coins + " altın kazandınız!", Toast.LENGTH_LONG).show();
-        }
+        if (isPremium) {
+            Toast.makeText(this, "🎉 Premium üyeliğiniz başarıyla aktifleştirildi!", Toast.LENGTH_SHORT).show();
 
-        if (isPremium && currentUser != null) {
-            currentUser.setPremium(true);
-            dbHelper.updateUserPremium(currentUser.getId(), true);
+            if (currentUser != null) {
+                currentUser.setPremium(true);
+                dbHelper.updateUserPremium(currentUser.getId(), true);
+            }
 
-            // SharedPreferences’a yaz
             SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
             prefs.edit().putBoolean("is_premium", true).apply();
         }
 
+        if (coins > 0) {
+            Toast.makeText(this, "💰 " + coins + " altın satın alındı!", Toast.LENGTH_SHORT).show();
+        }
+
         updateStatusDisplay();
     }
-
 
 
     @Override

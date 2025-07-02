@@ -38,9 +38,9 @@ public class HoroscopeActivity extends AppCompatActivity {
             "Terazi", "Akrep", "Yay", "Oğlak", "Kova", "Balık"};
     private String[] periods = {"Günlük", "Haftalık", "Aylık"};
 
-    private String currentZodiacSign = "Koç"; // Default sign
+    private String currentZodiacSign = null; //"Koç"; // Default sign
     private String currentPeriod = "Günlük"; // Default period
-    private static final int HOROSCOPE_COST = 5; // Coins required for horoscope reading
+    private static final int HOROSCOPE_COST = 10; // Coins required for horoscope reading
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,10 @@ public class HoroscopeActivity extends AppCompatActivity {
         btnContinueReading.setOnClickListener(v -> openDetailedHoroscope());
 
         // Get initial horoscope
-        getHoroscope();
+       // getHoroscope();
+        tvHoroscope.setText("Burç yorumunu görmek için burcunuzu seçin.");
+        tvHoroscope.setVisibility(View.VISIBLE);
+        btnContinueReading.setVisibility(View.GONE);
     }
 
     private void initViews() {
@@ -114,7 +117,9 @@ public class HoroscopeActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPeriod = periods[tab.getPosition()];
-                getHoroscope();
+                if (currentZodiacSign != null) {
+                    getHoroscope(); // ✅ Sadece burç seçilmişse yorum al
+                }
             }
 
             @Override
@@ -177,41 +182,25 @@ public class HoroscopeActivity extends AppCompatActivity {
     }
 
     private void setZodiacImage(String zodiacSign) {
+        if (zodiacSign == null) {
+            // Null durumunda varsayılan görseli yükle
+            ivZodiacSign.setImageResource(R.drawable.zodiac);
+            return;
+        }
+
         int resourceId = 0;
         switch (zodiacSign) {
             case "Koç":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Boğa":
-                resourceId = R.drawable.zodiac;
-                break;
             case "İkizler":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Yengeç":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Aslan":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Başak":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Terazi":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Akrep":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Yay":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Oğlak":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Kova":
-                resourceId = R.drawable.zodiac;
-                break;
             case "Balık":
                 resourceId = R.drawable.zodiac;
                 break;
@@ -219,6 +208,9 @@ public class HoroscopeActivity extends AppCompatActivity {
 
         if (resourceId != 0) {
             ivZodiacSign.setImageResource(resourceId);
+        } else {
+            // Güvenlik amacıyla yine varsayılanı yükle
+            ivZodiacSign.setImageResource(R.drawable.zodiac);
         }
     }
 

@@ -32,7 +32,7 @@ public class FalApplication extends Application {
         if (firstRun) {
             // First time running the app
             // Create new user with default 20 coins
-            currentUser = new User("User", 20);
+            currentUser = new User("User", 30);
             dbHelper.addUser(currentUser);
 
             // Save that app has been run before

@@ -106,6 +106,7 @@ public class FreeCoinActivity extends AppCompatActivity {
         btnShareApp = findViewById(R.id.btn_share_app);
         btnDailyBonus = findViewById(R.id.btn_daily_bonus);
         btnCompleteTask = findViewById(R.id.btn_complete_task);
+        btnWatchAd.setEnabled(false); // ilk durumda pasif
     }
 
     private void setupToolbar() {
@@ -136,33 +137,55 @@ public class FreeCoinActivity extends AppCompatActivity {
 
     private void watchAdForCoins() {
         if (rewardedAd != null) {
+            // Reklam zaten hazırsa hemen göster
             rewardedAd.show(this, rewardItem -> {
-                if (loadingDialog != null && loadingDialog.isShowing()) {
-                    loadingDialog.dismiss();
-                }
+                if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
 
                 addCoinsToUser(5);
                 Toast.makeText(this, "Reklam izlediğiniz için 5 altın kazandınız!", Toast.LENGTH_SHORT).show();
-                loadRewardedAd();  // tekrar reklam yükle
+                rewardedAd = null;
+                loadRewardedAd();
             });
+
         } else {
-            // Reklam henüz hazır değilse kullanıcıya göster
+            // Reklam hazır değilse, yüklenince otomatik göster
             loadingDialog = new AlertDialog.Builder(this)
                     .setTitle("Reklam Yükleniyor")
-                    .setMessage("Lütfen bekleyin...")
+                    .setMessage("Lütfen birkaç saniye bekleyin...")
                     .setCancelable(false)
                     .show();
 
-            loadRewardedAd();
+            isAdLoading = true;
 
-            // 3 saniye sonra dialog'u otomatik kapat ve bilgi ver
-            new android.os.Handler().postDelayed(() -> {
-                if (loadingDialog != null && loadingDialog.isShowing()) {
-                    loadingDialog.dismiss();
+            AdRequest adRequest = new AdRequest.Builder().build();
+            RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917", adRequest, new RewardedAdLoadCallback() {
+                @Override
+                public void onAdLoaded(RewardedAd ad) {
+                    rewardedAd = ad;
+                    isAdLoading = false;
+
+                    if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
+
+                    rewardedAd.show(FreeCoinActivity.this, rewardItem -> {
+                        addCoinsToUser(5);
+                        Toast.makeText(FreeCoinActivity.this, "Reklam izlediğiniz için 5 altın kazandınız!", Toast.LENGTH_SHORT).show();
+                        rewardedAd = null;
+                        loadRewardedAd();
+                    });
                 }
 
-                Toast.makeText(this, "Reklam şu an hazır değil. Lütfen tekrar deneyin.", Toast.LENGTH_SHORT).show();
-            }, 3000);
+                @Override
+                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
+                    rewardedAd = null;
+                    isAdLoading = false;
+
+                    if (loadingDialog != null && loadingDialog.isShowing()) loadingDialog.dismiss();
+                    Toast.makeText(FreeCoinActivity.this, "Reklam şu an hazır değil. Lütfen daha sonra tekrar deneyin.", Toast.LENGTH_SHORT).show();
+
+                    // 5 saniye sonra tekrar denemek istersen:
+                    new Handler().postDelayed(() -> loadRewardedAd(), 5000);
+                }
+            });
         }
     }
 
@@ -322,21 +345,29 @@ public class FreeCoinActivity extends AppCompatActivity {
         updateCoinsDisplay();
     }
     private void loadRewardedAd() {
+        if (isAdLoading || rewardedAd != null) return;
+
         isAdLoading = true;
 
         AdRequest adRequest = new AdRequest.Builder().build();
-
         RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917", adRequest, new RewardedAdLoadCallback() {
             @Override
             public void onAdLoaded(RewardedAd ad) {
                 rewardedAd = ad;
                 isAdLoading = false;
+
+                Log.d("Ads", "Reklam yüklendi.");
+                btnWatchAd.setEnabled(true); // butonu aktif et
+
             }
 
             @Override
             public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
                 rewardedAd = null;
                 isAdLoading = false;
+
+                Log.d("Ads", "Reklam yüklenemedi: " + adError.getMessage());
+                btnWatchAd.setEnabled(false); // reklam yoksa butonu pasifleştir
             }
         });
     }

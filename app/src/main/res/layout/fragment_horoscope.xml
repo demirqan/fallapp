@@ -120,7 +120,7 @@
                 android:id="@+id/btn_continue_reading"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:text="Okumaya Devam Et"
+                android:text="Detaylı Yorum Al"
                 android:background="@drawable/button_cosmic_primary"
                 android:textColor="@color/m3_cosmic_on_tertiary"
                 android:fontFamily="@font/bold"

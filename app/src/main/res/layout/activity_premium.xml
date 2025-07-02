@@ -236,7 +236,7 @@
                         android:id="@+id/tv_lifetime_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="499.99 TL"
+                        android:text="699.99 TL"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                         android:textColor="@color/m3_cosmic_tertiary"
                         android:fontFamily="@font/bold" />

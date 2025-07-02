@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if (firstRun) {
             // First time running the app
             // Create new user with default 20 coins
-            currentUser = new User("User", 2000);
+            currentUser = new User("User", 3000);
             dbHelper.addUser(currentUser);
 
             // Save that app has been run before

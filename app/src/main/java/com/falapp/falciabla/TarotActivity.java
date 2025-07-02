@@ -18,6 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -36,6 +37,7 @@ public class TarotActivity extends AppCompatActivity {
     private TextView tvInterpretation;
     private Button btnReset;
     private View progressBar;
+    private List<String> availableCardNames = new ArrayList<>();
 ;
 
     private static final int CARD_COUNT = 6;
@@ -44,7 +46,11 @@ public class TarotActivity extends AppCompatActivity {
     private String[] cardNames = {
 
             "gunes", "yargi_kilici", "aptallik", "yikilan_kule", "kral", "asilmis_adam",
-            "bas_rahip", "yildiz","heybetli_kale", "kirmizi_sarap", "dogan_gunes", "tanri_eli"
+            "bas_rahip", "yildiz","heybetli_kale", "adalet",
+            "kader_carki", "imparator", "deli", "aziz", "olum", "golgelerin_fisiltisi", "denge",
+             "savas_arabasi", "buyucu", "imparatorice", "guc", "ermis", "ay", "dunya", "azize",
+            "mahkeme"
+
     };
 
     private List<Integer> selectedCardIndices = new ArrayList<>();
@@ -57,6 +63,7 @@ public class TarotActivity extends AppCompatActivity {
         // Initialize database helper and services
         dbHelper = new DatabaseHelper(this);
         chatGPTService = new ChatGPTService();
+
 
         // Get current user
         currentUser = dbHelper.getUser();
@@ -81,6 +88,10 @@ public class TarotActivity extends AppCompatActivity {
 
         // Set up reset button
         btnReset.setOnClickListener(v -> resetCards());
+        availableCardNames = new ArrayList<>();
+        for (String card : cardNames) {
+            availableCardNames.add(card);
+        }
     }
 
     private void initViews() {
@@ -175,12 +186,17 @@ public class TarotActivity extends AppCompatActivity {
             return;
         }
 
+        if (availableCardNames.isEmpty()) {
+            Toast.makeText(this, "Tüm kartlar tükendi.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         selectedCardIndices.add(cardIndex);
 
-        int randomCardIndex = random.nextInt(cardNames.length);
-        String cardName = cardNames[randomCardIndex];
+        // Rastgele seç, ancak seçilen kartı listeden çıkar
+        int randomIndex = random.nextInt(availableCardNames.size());
+        String cardName = availableCardNames.remove(randomIndex);
 
-        // Logla
         Log.d("TarotActivity", "Seçilen kart: " + cardName);
 
         tarotCards[cardIndex].setTag(cardName);
@@ -193,7 +209,6 @@ public class TarotActivity extends AppCompatActivity {
             tarotCards[cardIndex].setImageResource(R.drawable.tarot_default);
         }
 
-        // Burada sınıf seviyesindeki listeyi kullan
         selectedCardNames.add(cardName);
 
         getInterpretation();
@@ -222,6 +237,8 @@ public class TarotActivity extends AppCompatActivity {
 
 
     private void resetCards() {
+        availableCardNames.clear();
+        availableCardNames.addAll(Arrays.asList(cardNames));
         selectedCardIndices.clear();
         selectedCardNames.clear();
 

@@ -171,7 +171,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         // Fiyatları BillingManager'dan al
         String monthlyPrice = "29 TL";
         String yearlyPrice = "119 TL";
-        String lifetimePrice = "499 TL";
+        String lifetimePrice = "699 TL";
 
         tvMonthlyPrice.setText(monthlyPrice);
         tvYearlyPrice.setText(yearlyPrice);
@@ -204,7 +204,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
                 break;
             case PLAN_LIFETIME:
                 cardLifetime.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Ömür Boyu Erişim Satın Al (499.99 TL)");
+                btnSubscribe.setText("Ömür Boyu Erişim Satın Al (699.99 TL)");
                 break;
         }
 

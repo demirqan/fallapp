@@ -41,7 +41,7 @@ public class BaseActivity extends AppCompatActivity {
             currentUser = dbHelper.getUser();
             if (currentUser == null) {
                 // If no user found, create a new one
-                currentUser = new User("User", 20);
+                currentUser = new User("User", 30);
                 dbHelper.addUser(currentUser);
             }
         }

@@ -155,7 +155,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
     private void finishOnboarding() {
         // Create new user with default 20 coins
-        User user = new User("Kullanıcı", 20);
+        User user = new User("Kullanıcı", 30);
         dbHelper.addUser(user);
 
         // Mark first run as completed

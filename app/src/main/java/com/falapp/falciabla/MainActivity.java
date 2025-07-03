@@ -127,13 +127,6 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser != null) {
             tvCoins.setText(String.valueOf(currentUser.getCoins()));
         }
-        
-        // TEST: Uzun basınca altın ekleme
-        tvCoins.setOnLongClickListener(v -> {
-            addCoinsToUser(1000);
-            Toast.makeText(this, "+1000 Altın Eklendi! Toplam: " + currentUser.getCoins(), Toast.LENGTH_SHORT).show();
-            return true;
-        });
     }
 
     private void setupBottomNavigation() {

@@ -305,7 +305,7 @@ public class CoinPurchaseActivity extends AppCompatActivity implements BillingMa
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917", adRequest, new RewardedAdLoadCallback() {
+        RewardedAd.load(this, "ca-app-pub-5042635078560836/8569397728", adRequest, new RewardedAdLoadCallback() {
             @Override
             public void onAdLoaded(RewardedAd ad) {
                 rewardedAd = ad;

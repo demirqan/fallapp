@@ -3,6 +3,7 @@ package com.falapp.falciabla;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.falapp.falciabla.models.User;
+import com.falapp.falciabla.utils.BillingManager;
 import com.falapp.falciabla.utils.DatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private User currentUser;
     private BottomNavigationView bottomNavigationView;
+    private BillingManager billingManager;
 
     private static final String PREFS_NAME = "FalAppPrefs";
     private static final String FIRST_RUN = "firstRun";
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         updateUI();
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         User user = dbHelper.getUser();
+        // Premium kontrolü için
+
 
 
     }
@@ -71,8 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
         syncPremiumStatus();  // SharedPreferences’ı güncelle
 
+
+
+
         updateUI(); // UI’ı premium durumuna göre yenile
     }
+
     private void syncPremiumStatus() {
         if (currentUser == null) return;
 

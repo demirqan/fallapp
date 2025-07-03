@@ -197,19 +197,18 @@ public class CoinPurchaseActivity extends AppCompatActivity implements BillingMa
 
     @Override
     public void onPurchaseSuccess(String productId, int coins, boolean isPremium) {
-        // Kullanıcı bilgilerini güncelle
+        if (productId.equals(BillingManager.PRODUCT_PREMIUM_LIFETIME) ||
+                productId.equals(BillingManager.SUBSCRIPTION_PREMIUM_MONTHLY) ||
+                productId.equals(BillingManager.SUBSCRIPTION_PREMIUM_YEARLY)) {
 
-
-        // Başarı mesajını göster
-        Toast.makeText(this,
-                coins + " altın başarıyla satın alındı!", Toast.LENGTH_SHORT).show();
-
-        // Premium kullanıcı olduysa, premium ekranına yönlendir
-        if (isPremium) {
-            Toast.makeText(this, "Premium üyeliğiniz aktifleştirildi!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "🎉 Premium üyeliğiniz aktifleştirildi!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, PremiumActivity.class);
             startActivity(intent);
             finish();
+
+        } else {
+            Toast.makeText(this, coins + " altın başarıyla satın alındı!", Toast.LENGTH_SHORT).show();
+            updateCoinsDisplay(); // Yeniden göstermek için
         }
     }
 

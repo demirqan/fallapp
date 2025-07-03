@@ -144,10 +144,8 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
             btnSubscribe.setVisibility(View.GONE);
 
             tvPremiumBenefits.setText("Premium üyelik avantajlarından yararlanıyorsunuz:\n\n" +
-                    "• Sınırsız fal bakma\n" +
-                    "• Sınırsız burç yorumu\n" +
-                    "• Sınırsız aşk uyumu\n" +
-                    "• Sınırsız rüya uyumu\n" +
+                    "• Günlük 10 Adet Fal Bakma\n" +
+                    "• Gelişmiş Cevaplar\n" +
                     "• Gelişmiş özellikler\n" +
                     "• Öncelikli destek");
         } else {
@@ -161,8 +159,8 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
             btnSubscribe.setVisibility(View.VISIBLE);
 
             tvPremiumBenefits.setText("Premium üyelik avantajları:\n\n" +
-                    "• Günlük 10 fal bakma hakkı\n" +
-                    "• Gelişmiş cevaplar\n" +
+                    "• Günlük 10 Adet Fal Bakma\n" +
+                    "• Gelişmiş Cevaplar\n" +
                     "• Gelişmiş özellikler\n" +
                     "• Öncelikli destek");
         }

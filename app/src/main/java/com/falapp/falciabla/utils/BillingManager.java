@@ -465,15 +465,15 @@
                     break;
                 case PRODUCT_PREMIUM_LIFETIME:
                     isPremium = true;
-                    coins = 100;
+                    coins = 0;
                     break;
                 case SUBSCRIPTION_PREMIUM_MONTHLY:
                     isPremium = true;
-                    coins = 50;
+                    coins = 0;
                     break;
                 case SUBSCRIPTION_PREMIUM_YEARLY:
                     isPremium = true;
-                    coins = 200;
+                    coins = 0;
                     break;
             }
 

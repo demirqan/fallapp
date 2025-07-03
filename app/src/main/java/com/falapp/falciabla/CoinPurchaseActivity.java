@@ -124,13 +124,11 @@ public class CoinPurchaseActivity extends AppCompatActivity implements BillingMa
 
     private void setupCoinPacks() {
 
-        String smallPackPrice = "50";
-        String mediumPackPrice ="120";
-        String largePackPrice = "120";
+        // Sabit fiyatları elle yaz
+        tvSmallPackPrice.setText("₺23,99");
+        tvMediumPackPrice.setText("₺47,99");
+        tvLargePackPrice.setText("109,99");
 
-        tvSmallPackPrice.setText(smallPackPrice);
-        tvMediumPackPrice.setText(mediumPackPrice);
-        tvLargePackPrice.setText(largePackPrice);
 
         cardSmallPack.setOnClickListener(v -> billingManager.startPurchaseFlow(BillingManager.PRODUCT_COINS_50));
         cardMediumPack.setOnClickListener(v -> billingManager.startPurchaseFlow(BillingManager.PRODUCT_COINS_120));
@@ -192,6 +190,9 @@ public class CoinPurchaseActivity extends AppCompatActivity implements BillingMa
     public void onBillingSetupFinished(boolean isSuccess) {
         if (!isSuccess) {
             Toast.makeText(this, "Ödeme sistemi başlatılamadı.", Toast.LENGTH_SHORT).show();
+        } else {
+            // 🔁 Fiyatları dinamik olarak göster
+
         }
     }
 

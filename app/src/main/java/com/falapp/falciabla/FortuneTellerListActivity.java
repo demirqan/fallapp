@@ -12,6 +12,7 @@ import com.falapp.falciabla.adapters.FortuneTellerAdapter;
 import com.falapp.falciabla.models.FortuneTeller;
 import com.falapp.falciabla.models.User;
 import com.falapp.falciabla.utils.DatabaseHelper;
+import com.falapp.falciabla.utils.FalLimitManager;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.List;
@@ -82,8 +83,17 @@ public class FortuneTellerListActivity extends AppCompatActivity implements Fort
 
     @Override
     public void onFortuneTellerClicked(FortuneTeller fortuneTeller) {
-        // Check if user has enough coins
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
+
+        if (isPremium) {
+            // Günlük hak kontrolü
+            if (!FalLimitManager.canUsePremiumFal(this)) {
+                Toast.makeText(this, "Bugünlük tüm fal hakkınızı kullandınız. Yarın tekrar deneyin.", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                FalLimitManager.increasePremiumFalCount(this);
+            }
+        }
 
         if (!isPremium && currentUser.getCoins() < fortuneTeller.getPrice()) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
@@ -91,7 +101,7 @@ public class FortuneTellerListActivity extends AppCompatActivity implements Fort
             return;
         }
 
-        // Open reading detail activity
+        // Fal detayına geç
         Intent intent = new Intent(this, ReadingDetailActivity.class);
         intent.putExtra("reading_type", readingType);
         intent.putExtra("fortune_teller_id", fortuneTeller.getId());

@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import com.falapp.falciabla.api.ChatGPTService;
 import com.falapp.falciabla.models.User;
 import com.falapp.falciabla.utils.DatabaseHelper;
+import com.falapp.falciabla.utils.FalLimitManager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -216,6 +217,16 @@ public class HoroscopeActivity extends AppCompatActivity {
 
     private void getHoroscope() {
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
+
+        // 🔒 Premium ise fal hakkı kontrolü
+        if (isPremium) {
+            if (!FalLimitManager.canUsePremiumFal(this)) {
+                Toast.makeText(this, "Bugünlük tüm fal hakkınızı kullandınız. Yarın tekrar deneyin.", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                FalLimitManager.increasePremiumFalCount(this);
+            }
+        }
 
         // 🔒 Yeterli coin kontrolü sadece premium olmayanlar için
         if (!isPremium && currentUser.getCoins() < HOROSCOPE_COST) {

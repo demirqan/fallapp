@@ -46,6 +46,8 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
     private static final int PLAN_YEARLY = 1;
     private static final int PLAN_LIFETIME = 2;
 
+    private boolean hasShownPremiumToast = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,10 +161,8 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
             btnSubscribe.setVisibility(View.VISIBLE);
 
             tvPremiumBenefits.setText("Premium üyelik avantajları:\n\n" +
-                    "• Sınırsız fal bakma\n" +
-                    "• Sınırsız burç yorumu\n" +
-                    "• Sınırsız aşk uyumu\n" +
-                    "• Sınırsız rüya uyumu\n" +
+                    "• Günlük 10 fal bakma hakkı\n" +
+                    "• Gelişmiş cevaplar\n" +
                     "• Gelişmiş özellikler\n" +
                     "• Öncelikli destek");
         }
@@ -170,9 +170,9 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
 
     private void setupSubscriptionPlans() {
         // Fiyatları BillingManager'dan al
-        String monthlyPrice = "29 TL";
-        String yearlyPrice = "119 TL";
-        String lifetimePrice = "699 TL";
+        String monthlyPrice = "34.99 TL";
+        String yearlyPrice = "144.99 TL";
+        String lifetimePrice = "839.99 TL";
 
         tvMonthlyPrice.setText(monthlyPrice);
         tvYearlyPrice.setText(yearlyPrice);
@@ -197,15 +197,15 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         switch (planId) {
             case PLAN_MONTHLY:
                 cardMonthly.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Aylık Plana Abone Ol (29.99 TL)");
+                btnSubscribe.setText("Aylık Plana Abone Ol (34.99 TL)");
                 break;
             case PLAN_YEARLY:
                 cardYearly.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Yıllık Plana Abone Ol (199.99 TL)");
+                btnSubscribe.setText("Yıllık Plana Abone Ol (144.99 TL)");
                 break;
             case PLAN_LIFETIME:
                 cardLifetime.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Ömür Boyu Erişim Satın Al (699.99 TL)");
+                btnSubscribe.setText("Ömür Boyu Erişim Satın Al (839.99 TL)");
                 break;
         }
 
@@ -272,28 +272,32 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         }
     }
 
+
     @Override
     public void onPurchaseSuccess(String productId, int coins, boolean isPremium) {
         Log.d("PremiumCheck", "🎯 onPurchaseSuccess: " + productId + " | premium=" + isPremium + " | coins=" + coins);
 
-        if (isPremium) {
-            Toast.makeText(this, "🎉 Premium üyeliğiniz başarıyla aktifleştirildi!", Toast.LENGTH_SHORT).show();
+        runOnUiThread(() -> {
+            if (isPremium && !hasShownPremiumToast) {
+                hasShownPremiumToast = true;
+                Toast.makeText(this, "🎉 Premium üyeliğiniz başarıyla aktifleştirildi!", Toast.LENGTH_LONG).show();
 
-            if (currentUser != null) {
-                currentUser.setPremium(true);
-                dbHelper.updateUserPremium(currentUser.getId(), true);
+                if (currentUser != null) {
+                    currentUser.setPremium(true);
+                    dbHelper.updateUserPremium(currentUser.getId(), true);
+                }
+
+                SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+                prefs.edit().putBoolean("is_premium", true).apply();
             }
 
-            SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
-            prefs.edit().putBoolean("is_premium", true).apply();
-        }
+            currentUser = dbHelper.getUser();
 
-        if (coins > 0) {
-            Toast.makeText(this, "💰 " + coins + " altın satın alındı!", Toast.LENGTH_SHORT).show();
-        }
 
+        });
         updateStatusDisplay();
     }
+
 
 
     @Override

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.falapp.falciabla.api.ChatGPTService;
 import com.falapp.falciabla.models.User;
 import com.falapp.falciabla.utils.DatabaseHelper;
+import com.falapp.falciabla.utils.FalLimitManager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -90,7 +91,7 @@ public class DreamInterpretationActivity extends AppCompatActivity {
     private void setupBottomNavigation() {
         // Önce item'i seç, sonra listener'ı setup et
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
-        
+
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
@@ -125,17 +126,26 @@ public class DreamInterpretationActivity extends AppCompatActivity {
             return;
         }
 
-        // Premium durumu kontrolü
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
 
-        // Premium olmayan kullanıcılar için coin kontrolü
+        // 💎 Premium kullanıcılar için günlük 10 fal limiti kontrolü
+        if (isPremium) {
+            if (!FalLimitManager.canUsePremiumFal(this)) {
+                Toast.makeText(this, "Bugün 10 fal yorumu hakkınızı kullandınız. Yarın tekrar deneyin.", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                FalLimitManager.increasePremiumFalCount(this); // limiti arttır
+            }
+        }
+
+        // 🪙 Premium olmayan kullanıcılar için coin kontrolü
         if (!isPremium && currentUser.getCoins() < INTERPRETATION_COST) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, CoinPurchaseActivity.class));
             return;
         }
 
-        // ✅ Coin sadece premium olmayan kullanıcılardan düşülür
+        // ✅ Coin sadece premium olmayanlardan düşülür
         if (!isPremium) {
             currentUser.removeCoins(INTERPRETATION_COST);
             dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());
@@ -146,7 +156,7 @@ public class DreamInterpretationActivity extends AppCompatActivity {
         btnInterpret.setEnabled(false);
         tvInterpretation.setVisibility(View.GONE);
 
-        // Get dream interpretation in background thread
+        // Get dream interpretation
         new Thread(() -> {
             final String interpretation = chatGPTService.getDreamInterpretation(dreamText);
 

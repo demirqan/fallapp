@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.falapp.falciabla.models.User;
 import com.falapp.falciabla.utils.DatabaseHelper;
+import com.falapp.falciabla.utils.FalLimitManager;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.Calendar;
@@ -101,7 +102,6 @@ public class LoveCompatibilityInputActivity extends AppCompatActivity {
     }
 
     private void validateAndProceed() {
-        // Validate name
         String name = etName.getText().toString().trim();
         if (name.isEmpty()) {
             etName.setError("Lütfen isim girin");
@@ -109,23 +109,30 @@ public class LoveCompatibilityInputActivity extends AppCompatActivity {
             return;
         }
 
-        // Validate birth date
         if (selectedBirthDate == null || selectedBirthDate.isEmpty()) {
             Toast.makeText(this, "Lütfen doğum tarihi seçin", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Premium kontrolü (hem veritabanından hem SharedPreferences'tan kontrol edilebilir)
-        boolean isPremium = currentUser.isPremium(); // 🔄 veritabanı üzerinden net kontrol
+        boolean isPremium = currentUser.isPremium();
 
-        // Altın yeterli değilse ve kullanıcı premium değilse
+        // Premium kullanıcı ise günlük fal hakkını kontrol et
+        if (isPremium) {
+            if (!FalLimitManager.canUsePremiumFal(this)) {
+                Toast.makeText(this, "Bugün 10 fal yorumu hakkınızı kullandınız. Yarın tekrar deneyin.", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                FalLimitManager.increasePremiumFalCount(this); // limiti arttır
+            }
+        }
+
+        // Premium değilse altın kontrolü yap
         if (!isPremium && currentUser.getCoins() < COMPATIBILITY_COST) {
             Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, CoinPurchaseActivity.class));
             return;
         }
 
-        // Eğer premium değilse, coin düş
         if (!isPremium) {
             currentUser.removeCoins(COMPATIBILITY_COST);
             dbHelper.updateUserCoins(currentUser.getId(), currentUser.getCoins());

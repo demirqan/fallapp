@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.falapp.falciabla.api.ChatGPTService;
 import com.falapp.falciabla.models.User;
 import com.falapp.falciabla.utils.DatabaseHelper;
+import com.falapp.falciabla.utils.FalLimitManager;
 import com.google.android.material.appbar.MaterialToolbar;
 
 
@@ -168,8 +169,17 @@ public class TarotActivity extends AppCompatActivity {
         boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
                 .getBoolean("is_premium", false);
 
+        // 🔴 İlk kart seçiliyorsa ve premium kullanıcıysa günlük 10 fal hakkı kontrolü yap
         if (selectedCardIndices.isEmpty()) {
-            if (!isPremium) {
+            if (isPremium) {
+                if (!FalLimitManager.canUsePremiumFal(this)) {
+                    Toast.makeText(this, "Bugün 10  fal hakkınızı kullandınız. Yarın tekrar deneyin.", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    FalLimitManager.increasePremiumFalCount(this); // limiti arttır
+                }
+            } else {
+                // 🔸 Premium değilse altın kontrolü yap
                 if (currentUser.getCoins() < TAROT_COST) {
                     Toast.makeText(this, "Yeterli altınınız yok. Lütfen altın satın alın.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, CoinPurchaseActivity.class));
@@ -181,6 +191,7 @@ public class TarotActivity extends AppCompatActivity {
             }
         }
 
+        // Maksimum 6 kart seçilmesine izin ver
         if (selectedCardIndices.size() >= 6) {
             Toast.makeText(this, "En fazla 6 kart seçebilirsiniz.", Toast.LENGTH_SHORT).show();
             return;
@@ -193,7 +204,7 @@ public class TarotActivity extends AppCompatActivity {
 
         selectedCardIndices.add(cardIndex);
 
-        // Rastgele seç, ancak seçilen kartı listeden çıkar
+        // Rastgele bir kart seç ve liste dışına çıkar
         int randomIndex = random.nextInt(availableCardNames.size());
         String cardName = availableCardNames.remove(randomIndex);
 

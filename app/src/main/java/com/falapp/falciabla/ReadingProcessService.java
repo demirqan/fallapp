@@ -82,7 +82,7 @@ public class ReadingProcessService extends Service {
 
         // Add role
         promptBuilder.append("Sen ").append(fortuneTeller.getName())
-                .append(" adında profesyonel bir falcısın ve ");
+                .append(" adında deneyimli bir falcısın. ve ");
 
         // Add reading type
         switch (reading.getType()) {
@@ -123,7 +123,7 @@ public class ReadingProcessService extends Service {
                 .append(reading.getTopics())
                 .append(") gelecek hakkında bilgiler ver. Olumlu ve olumsuz yönleri dengeli bir şekilde anlat. ")
                 .append("Fal sonucunu 3-4 paragraf şeklinde yaz ve son olarak kişiye şans getirecek bir renk, ")
-                .append("şanslı gün ve şanslı sayı öner.");
+                .append("şanslı gün ve şanslı sayı öner. giriş cümlesi kullanmadan fala başla");
 
         return promptBuilder.toString();
     }

@@ -2,6 +2,7 @@ package com.falapp.falciabla;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -77,6 +78,10 @@ public class LoveCompatibilityResultActivity extends AppCompatActivity {
 
         // Get compatibility result
         getCompatibilityResult();
+        Button btnNewPerson = findViewById(R.id.btn_new_person);
+        btnNewPerson.setOnClickListener(v -> {
+            finish(); // ya da başka bir sayfaya yönlendirme
+        });
     }
 
     private void initViews() {

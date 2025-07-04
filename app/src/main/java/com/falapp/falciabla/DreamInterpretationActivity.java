@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.speech.tts.TextToSpeech;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +25,9 @@ public class DreamInterpretationActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private User currentUser;
     private ChatGPTService chatGPTService;
+
+    private TextToSpeech tts;
+    private Button btnSpeak;
 
     private MaterialToolbar toolbar;
     private EditText etDream;
@@ -51,9 +56,32 @@ public class DreamInterpretationActivity extends AppCompatActivity {
             dbHelper.addUser(currentUser);
             Toast.makeText(this, "Yeni kullanıcı oluşturuldu!", Toast.LENGTH_SHORT).show();
         }
+        initViews();
+
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(new Locale("tr", "TR"));
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Toast.makeText(this, "Türkçe dili desteklenmiyor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnSpeak.setOnClickListener(v -> {
+            boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE).getBoolean("is_premium", false);
+            if (!isPremium) {
+                Toast.makeText(this, "🔒 Sesli okuma sadece Premium üyeler içindir.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String text = tvInterpretation.getText().toString();
+            if (!text.isEmpty()) {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
 
         // Initialize views
-        initViews();
+
 
         // Set up toolbar
         setupToolbar();
@@ -73,6 +101,7 @@ public class DreamInterpretationActivity extends AppCompatActivity {
         ivDream = findViewById(R.id.iv_dream);
         progressBar = findViewById(R.id.progress_bar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        btnSpeak = findViewById(R.id.btn_speak);
     }
 
     private void setupToolbar() {
@@ -166,7 +195,18 @@ public class DreamInterpretationActivity extends AppCompatActivity {
 
                 tvInterpretation.setText(interpretation);
                 tvInterpretation.setVisibility(View.VISIBLE);
+                btnSpeak.setVisibility(View.VISIBLE);
+
+
             });
         }).start();
+    }
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 }

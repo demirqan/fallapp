@@ -261,6 +261,19 @@
                     android:visibility="gone" />
 
             </FrameLayout>
+            <Button
+                android:id="@+id/btn_speak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Yorumu Sesli Dinle"
+                android:background="@drawable/btn_cosmic_primary"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:fontFamily="@font/medium"
+                android:visibility="gone"/>
+
 
             <Button
                 android:id="@+id/btn_new_person"

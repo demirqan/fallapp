@@ -2,6 +2,7 @@ package com.falapp.falciabla;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class TarotActivity extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class TarotActivity extends AppCompatActivity {
     private ChatGPTService chatGPTService;
 
     private MaterialToolbar toolbar;
+    private TextToSpeech tts;
+    private Button btnSpeak;
     private ImageView[] tarotCards;
     private static final int TAROT_COST = 10; // Her yorum başına 5 coin
     private List<String> selectedCardNames = new ArrayList<>(); // 🔥 bunu ekle
@@ -78,6 +82,29 @@ public class TarotActivity extends AppCompatActivity {
         // Initialize views
         initViews();
 
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(new Locale("tr", "TR"));
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Toast.makeText(this, "Türkçe dili desteklenmiyor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnSpeak.setOnClickListener(v -> {
+            boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
+                    .getBoolean("is_premium", false);
+
+            if (!isPremium) {
+                Toast.makeText(this, "Sesli okuma sadece Premium üyeler içindir.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String text = tvInterpretation.getText().toString();
+            if (!text.isEmpty()) {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
+
         // Set up toolbar
         setupToolbar();
 
@@ -100,6 +127,7 @@ public class TarotActivity extends AppCompatActivity {
         tvInterpretation = findViewById(R.id.tv_interpretation);
         btnReset = findViewById(R.id.btn_reset);
         progressBar = findViewById(R.id.progress_bar);
+        btnSpeak = findViewById(R.id.btn_speak);
 
 
         // Initialize tarot card ImageViews
@@ -242,6 +270,7 @@ public class TarotActivity extends AppCompatActivity {
                 tvInterpretation.setText(interpretation);
                 tvInterpretation.setVisibility(View.VISIBLE);
                // btnReset.setVisibility(View.VISIBLE);
+                btnSpeak.setVisibility(View.VISIBLE); // herkes görsün
             });
         }).start();
     }

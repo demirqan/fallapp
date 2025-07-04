@@ -2,7 +2,11 @@ package com.falapp.falciabla;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -18,6 +22,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class TarotDetailActivity extends AppCompatActivity {
@@ -30,6 +35,9 @@ public class TarotDetailActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
     private TextView tvInterpretation;
+    private TextToSpeech tts;
+    private Button btnSpeak;
+    private boolean isPremium;
 
     private static final int TAROT_COST = 10; // Coins required for tarot reading
 
@@ -69,7 +77,7 @@ public class TarotDetailActivity extends AppCompatActivity {
         }
 
         // Check if user has enough coins
-        boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
                 .getBoolean("is_premium", false);
 
         if (!isPremium && currentUser.getCoins() < TAROT_COST) {
@@ -86,6 +94,28 @@ public class TarotDetailActivity extends AppCompatActivity {
 
         // Initialize views
         initViews();
+        btnSpeak.setOnClickListener(v -> {
+            if (!isPremium) {
+                Toast.makeText(this, "Sesli okuma sadece Premium üyeler içindir.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String text = tvInterpretation.getText().toString();
+            if (!text.isEmpty()) {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
+
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(new Locale("tr", "TR"));
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Toast.makeText(this, "Türkçe dili desteklenmiyor", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+        });
 
         // Set up toolbar
         setupToolbar();
@@ -98,6 +128,7 @@ public class TarotDetailActivity extends AppCompatActivity {
 
         // Get tarot reading
         getTarotReading();
+        btnSpeak.setVisibility(View.VISIBLE); // TEST amaçlı her zaman görünür yap
     }
 
     private void initViews() {
@@ -105,6 +136,8 @@ public class TarotDetailActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         tvInterpretation = findViewById(R.id.tv_interpretation);
+        btnSpeak = findViewById(R.id.btn_speak);
+
     }
 
     private void setupToolbar() {
@@ -180,7 +213,17 @@ public class TarotDetailActivity extends AppCompatActivity {
             // Update UI on main thread
             runOnUiThread(() -> {
                 tvInterpretation.setText(interpretation);
+                btnSpeak.setVisibility(View.VISIBLE); // yorum geldiyse göster
+
             });
         }).start();
+    }
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 }

@@ -145,6 +145,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
 
             tvPremiumBenefits.setText("Premium üyelik avantajlarından yararlanıyorsunuz:\n\n" +
                     "• Günlük 10 Adet Fal Bakma\n" +
+                    "• Sesli Fal Okuma\n" +
                     "• Gelişmiş Cevaplar\n" +
                     "• Gelişmiş özellikler\n" +
                     "• Öncelikli destek");
@@ -160,6 +161,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
 
             tvPremiumBenefits.setText("Premium üyelik avantajları:\n\n" +
                     "• Günlük 10 Adet Fal Bakma\n" +
+                    "• Sesli Fal Okuma\n" +
                     "• Gelişmiş Cevaplar\n" +
                     "• Gelişmiş özellikler\n" +
                     "• Öncelikli destek");

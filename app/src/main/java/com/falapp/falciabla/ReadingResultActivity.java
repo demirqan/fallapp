@@ -2,6 +2,7 @@ package com.falapp.falciabla;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +25,9 @@ public class ReadingResultActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private FortuneReading reading;
     private FortuneTeller fortuneTeller;
+
+    private Button btnSpeak;
+    private TextToSpeech tts;
 
     private MaterialToolbar toolbar;
     private ImageView ivReadingIcon;
@@ -62,6 +66,29 @@ public class ReadingResultActivity extends AppCompatActivity {
         setReadingData();
         setupButtonListeners(); // ✅ Paylaş & Kaydet
         checkForUpdatedResultPeriodically();
+
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(new java.util.Locale("tr", "TR"));
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Toast.makeText(this, "Türkçe dili desteklenmiyor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnSpeak.setOnClickListener(v -> {
+            boolean isPremium = getSharedPreferences("app_prefs", MODE_PRIVATE)
+                    .getBoolean("is_premium", false);
+
+            if (!isPremium) {
+                Toast.makeText(this, "Sesli okuma sadece Premium üyeler içindir.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String text = tvResult.getText().toString();
+            if (!text.isEmpty()) {
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
     }
 
     private void initViews() {
@@ -70,6 +97,7 @@ public class ReadingResultActivity extends AppCompatActivity {
         tvFortuneTellerName = findViewById(R.id.tv_fortune_teller_name);
         tvUserName = findViewById(R.id.tv_user_name);
         tvResult = findViewById(R.id.tv_result);
+        btnSpeak = findViewById(R.id.btn_speak);
 
         // Bu şekilde, sınıf değişkenlerine atama yapılmalı:
         btnShare = findViewById(R.id.btn_share);
@@ -115,6 +143,7 @@ public class ReadingResultActivity extends AppCompatActivity {
         tvUserName.setText(reading.getUserName());
         if (reading.getResult() != null && !reading.getResult().trim().isEmpty()) {
             tvResult.setText(reading.getResult());
+            btnSpeak.setVisibility(View.VISIBLE); // sadece yorum varsa görünür
         } else {
             tvResult.setText("Fal sonucu hazırlanıyor, lütfen bekleyin...");
         }
@@ -139,6 +168,15 @@ public class ReadingResultActivity extends AppCompatActivity {
                 }
             }
         }, 3000); // İlk kontrol 3 saniye sonra
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
     }
 
 

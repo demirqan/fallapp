@@ -254,7 +254,8 @@
         <!-- Google Play Billing -->
         <meta-data
             android:name="com.google.android.play.billingclient.version"
-            android:value="6.1.0" />
+            android:value="7.0.0"
+            tools:replace="android:value" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

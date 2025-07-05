@@ -170,8 +170,8 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
 
     private void setupSubscriptionPlans() {
         // Fiyatları BillingManager'dan al
-        String monthlyPrice = "34.99 TL";
-        String yearlyPrice = "144.99 TL";
+        String monthlyPrice = "58.99 TL";
+        String yearlyPrice = "299.99 TL";
         String lifetimePrice = "839.99 TL";
 
         tvMonthlyPrice.setText(monthlyPrice);
@@ -197,11 +197,11 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         switch (planId) {
             case PLAN_MONTHLY:
                 cardMonthly.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Aylık Plana Abone Ol (34.99 TL)");
+                btnSubscribe.setText("Aylık Plana Abone Ol (58.99 TL)");
                 break;
             case PLAN_YEARLY:
                 cardYearly.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
-                btnSubscribe.setText("Yıllık Plana Abone Ol (144.99 TL)");
+                btnSubscribe.setText("Yıllık Plana Abone Ol (299.99 TL)");
                 break;
             case PLAN_LIFETIME:
                 cardLifetime.setCardBackgroundColor(getResources().getColor(R.color.selected_card_background));
@@ -272,7 +272,6 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         }
     }
 
-
     @Override
     public void onPurchaseSuccess(String productId, int coins, boolean isPremium) {
         Log.d("PremiumCheck", "🎯 onPurchaseSuccess: " + productId + " | premium=" + isPremium + " | coins=" + coins);
@@ -281,6 +280,7 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
             if (isPremium && !hasShownPremiumToast) {
                 hasShownPremiumToast = true;
                 Toast.makeText(this, "🎉 Premium üyeliğiniz başarıyla aktifleştirildi!", Toast.LENGTH_LONG).show();
+                updateStatusDisplay();
 
                 if (currentUser != null) {
                     currentUser.setPremium(true);
@@ -298,19 +298,9 @@ public class PremiumActivity extends AppCompatActivity implements BillingManager
         updateStatusDisplay();
     }
 
-
-
     @Override
     public void onPurchaseFailed(int errorCode, String errorMessage) {
         Toast.makeText(this, "Satın alma işlemi başarısız: " + errorMessage, Toast.LENGTH_SHORT).show();
     }
-    private boolean isPremiumBonusGiven() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        return prefs.getBoolean(PREMIUM_BONUS_GIVEN, false);
-    }
 
-    private void setPremiumBonusGiven() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putBoolean(PREMIUM_BONUS_GIVEN, true).apply();
-    }
 }

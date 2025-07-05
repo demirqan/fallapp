@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace 'com.falapp.falciabla'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.falapp.falciabla"
         minSdk 24
-        targetSdk 34
-        versionCode 10
-        versionName "1.0"
+        targetSdk 35
+        versionCode 14
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.json:json:20231013'
 
     // Google Play Billing
-    implementation 'com.android.billingclient:billing:6.1.0'
+    implementation 'com.android.billingclient:billing:7.0.0'
 
     // Google Play Services (for ads - optional)
     implementation 'com.google.android.gms:play-services-ads:23.0.0'

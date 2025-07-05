@@ -152,13 +152,13 @@ public class FreeCoinActivity extends AppCompatActivity {
             isAdLoading = true;
 
             AdRequest adRequest = new AdRequest.Builder().build();
-            RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917", adRequest, new RewardedAdLoadCallback() {
+            RewardedAd.load(this, "ca-app-pub-5042635078560836/2891950663", adRequest, new RewardedAdLoadCallback() {
                 @Override
                 public void onAdLoaded(@NonNull RewardedAd ad) {
                     rewardedAd = ad;
                     isAdLoading = false;
                     Log.d("AdTest", "✅ Reklam yüklendi!");
-                    Toast.makeText(FreeCoinActivity.this, "Reklam başarıyla yüklendi", Toast.LENGTH_SHORT).show();
+
 
                     if (loadingDialog != null && loadingDialog.isShowing()) {
                         loadingDialog.dismiss();

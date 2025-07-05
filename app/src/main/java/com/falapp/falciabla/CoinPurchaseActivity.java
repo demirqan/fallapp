@@ -125,9 +125,9 @@ public class CoinPurchaseActivity extends AppCompatActivity implements BillingMa
     private void setupCoinPacks() {
 
         // Sabit fiyatları elle yaz
-        tvSmallPackPrice.setText("₺23,99");
-        tvMediumPackPrice.setText("₺47,99");
-        tvLargePackPrice.setText("109,99");
+        tvSmallPackPrice.setText("₺11,99");
+        tvMediumPackPrice.setText("₺22,99");
+        tvLargePackPrice.setText("47,99");
 
 
         cardSmallPack.setOnClickListener(v -> billingManager.startPurchaseFlow(BillingManager.PRODUCT_COINS_50));
